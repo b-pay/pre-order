@@ -2,7 +2,7 @@
 
 ## Referência dos campos
 
-| Campo|Tipo|Descrição|Obrigatório
+| Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
 | SecretKey  | UUID (string)   | Chave secreta para identificar o sistema que está enviando a requisição. Exemplo: "b733ccec-8099-11e5-8bcf-feff819cdc9f"    |Sim|
 | Buyer | [Buyer](https://github.com/b-pay/pre-order/blob/master/README.md#buyer) | Objeto com os dados do comprador    |Sim|
@@ -12,7 +12,7 @@
 
 ## Buyer
 
-| Campo|Tipo|Descrição|Obrigatório
+| Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
 | DocumentNumber | String | Numerto do documento do comprador| Sim |
 | PersonType | String | Tipo de pessoa. Valores possíveis - 'Person' ou 'Company' | Sim |
@@ -27,8 +27,16 @@
 
 ## BillingAddress
 
-| Campo|Tipo|Descrição|Obrigatório
+| Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
+| Street | String | Nome da rua. Máximo de 64 caracteresres | Sim |
+| Number | String | Número | Sim |
+| ZipCode | String | CEP (sem traço) | Sim |
+| Complement | String | Complemento. Máximo de 64 caracteresres | Não |
+| District | String | Bairro. Máximo 64 caracteres | Sim |
+| City | String | Cidade. Máximo de 64 caracteres | Sim |
+| StateName | String | Estado. Máximo de 32 caracteres | Sim |
+| Country | String | País. Máximo de 32 caracteres | Sim |
 
 ## Requisição Json de exemplo
 
