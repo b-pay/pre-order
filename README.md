@@ -5,10 +5,25 @@
 | Campo|Tipo|Descrição|Obrigatório
 | --------|---------|-------|-------|
 | SecretKey  | UUID (string)   | Chave secreta para identificar o sistema que está enviando a requisição. Exemplo: "b733ccec-8099-11e5-8bcf-feff819cdc9f"    |Sim|
-| Buyer | Buyer | Objeto com os dados do comprador    |Sim|
+| Buyer | [Buyer](https://github.com/b-pay/pre-order/blob/master/README.md#Buyer) | Objeto com os dados do comprador    |Sim|
 | Order | Order | Objeto com os dados do pedido    |Sim|
 | Shipping | Shipping | Objeto com os dados de entrega    |Sim|
 | Payment | Payment | Objeto com as opções do pagamento   |Sim|
+
+## Buyer
+
+| Campo|Tipo|Descrição|Obrigatório
+| --------|---------|-------|-------|
+| DocumentNumber | String | Numerto do documento do comprador| Sim |
+| PersonType | String | Tipo de pessoa. Valores possíveis - 'Person' ou 'Company' | Sim |
+| Name | String | Nome do comprador com no máximo 64 caracteres | Sim |
+| Email | String | Endereço de e-mail do comprador com no máximo 64 caracteres | Sim |
+| Gender | String | Sexo do comprador. Valores possíveis - 'Male' ou 'Female' | Sim |
+| Birthday | String | Data de aniversário do comprador. Formato aceito yyyy-mm-dd | Não |
+| HomePhone | String | Telefone residencial do comprador. Formatos aceitos: (DDD)999999999 ou DDI(DDD)999999999 | Sim |
+| MobilePhone | String | Telefone celular do comprador. Formatos aceitos: (DDD)999999999 ou DDI(DDD)999999999 | Sim |
+| WorkPhone | String | Telefone comercial do comprador. Formatos aceitos: (DDD)999999999 ou DDI(DDD)999999999 | Sim |
+| BillingAddress | BillingAddress | Objeto com os dados do endereço de cobrança | Sim |
 
 
 ## Requisição Json de exemplo
