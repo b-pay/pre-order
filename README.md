@@ -56,6 +56,24 @@
 | UnitPriceInCents | Integer | Valor unitário do item no carrinho | Sim |
 | Quantity | Integer | Quantidade do item | Sim |
 
+## Shipping
+| Campo|Tipo|Descrição|Obrigatório |
+| --------|---------|-------|-------|
+| CostInCents | Integer | Valor do frete | Não |
+ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/master/README.md#shippingaddress) | Objeto com dados do endereço de entrega | Sim |
+
+## ShippingAddress
+| Campo|Tipo|Descrição|Obrigatório |
+| --------|---------|-------|-------|
+| Street | String | Nome da rua. Máximo de 64 caracteresres | Sim |
+| Number | String | Número | Sim |
+| ZipCode | String | CEP (sem traço) | Sim |
+| Complement | String | Complemento. Máximo de 64 caracteresres | Não |
+| District | String | Bairro. Máximo 64 caracteres | Sim |
+| City | String | Cidade. Máximo de 64 caracteres | Sim |
+| StateName | String | Estado. Máximo de 32 caracteres | Sim |
+| Country | String | País. Máximo de 32 caracteres | Sim |
+
 ## Requisição Json de exemplo
 
 ```json
