@@ -6,9 +6,9 @@
 | --------|---------|-------|-------|
 | SellerKey  | UUID (string)   | Chave secreta para identificar o sistema que está enviando a requisição. Exemplo: "b733ccec-8099-11e5-8bcf-feff819cdc9f"    |Sim|
 | Buyer | [Buyer](https://github.com/b-pay/pre-order/blob/master/README.md#buyer) | Objeto com os dados do comprador    |Sim|
-| Order | Order | Objeto com os dados do pedido    |Sim|
-| Shipping | Shipping | Objeto com os dados de entrega    |Sim|
-| Payment | Payment | Objeto com as opções do pagamento   |Sim|
+| Order | [Order](https://github.com/b-pay/pre-order/blob/master/README.md#order) | Objeto com os dados do pedido    |Sim|
+| Shipping | [Shipping](https://github.com/b-pay/pre-order/blob/master/README.md#shipping) | Objeto com os dados de entrega    |Sim|
+| Payment | [Payment](https://github.com/b-pay/pre-order/blob/master/README.md#payment) | Objeto com as opções do pagamento   |Sim|
 
 ## Buyer
 
