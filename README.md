@@ -74,6 +74,13 @@ ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/mast
 | StateName | String | Estado. Máximo de 32 caracteres | Sim |
 | Country | String | País. Máximo de 32 caracteres | Sim |
 
+## Payment
+| Campo|Tipo|Descrição|Obrigatório |
+| --------|---------|-------|-------|
+| OperationType | String | Tipo da transação a ser realizada. Valores possíveis: 'AuthorizeAndCapture', 'AuthOnly' | Sim |
+| Currency | String | Moeda da transação. Valor aceito - 'BRL' | Sim |
+| Installments | Array | | |
+
 ## Requisição Json de exemplo
 
 ```json
