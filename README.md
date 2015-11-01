@@ -38,6 +38,24 @@
 | StateName | String | Estado. Máximo de 32 caracteres | Sim |
 | Country | String | País. Máximo de 32 caracteres | Sim |
 
+## Order
+| Campo|Tipo|Descrição|Obrigatório |
+| --------|---------|-------|-------|
+| OrderDescription | String | Descrição do pedido. Máximo de 256 caracteres | Não |
+| OrderReference | String | Identificador do pedido na loja. Máximo de 56 caracteres | Não |
+| AmountInCents | Integer | Valor do pedido | Sim |
+| Items | [Item](https://github.com/b-pay/pre-order/blob/master/README.md#item) | Coleção com itens do carrinho de compras | Sim |
+
+## Item
+| Campo|Tipo|Descrição|Obrigatório |
+| --------|---------|-------|-------|
+| SKU | String | Identificador do produto | Não |
+| Name | String | Nome do produto | Sim |
+| Category | String | Categoria do produto | Não |
+| PriceInCents | Integer | Valor total do item no carrinho | Sim |
+| UnitPriceInCents | Integer | Valor unitário do item no carrinho | Sim |
+| Quantity | Integer | Quantidade do item | Sim |
+
 ## Requisição Json de exemplo
 
 ```json
