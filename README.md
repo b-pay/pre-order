@@ -23,8 +23,12 @@
 | HomePhone | String | Telefone residencial do comprador. Formatos aceitos: (DDD)999999999 ou DDI(DDD)999999999 | Sim |
 | MobilePhone | String | Telefone celular do comprador. Formatos aceitos: (DDD)999999999 ou DDI(DDD)999999999 | Sim |
 | WorkPhone | String | Telefone comercial do comprador. Formatos aceitos: (DDD)999999999 ou DDI(DDD)999999999 | Sim |
-| BillingAddress | BillingAddress | Objeto com os dados do endereço de cobrança | Sim |
+| BillingAddress | [BillingAddress](https://github.com/b-pay/pre-order/blob/master/README.md#billingaddress) | Objeto com os dados do endereço de cobrança |Sim|
 
+## BillingAddress
+
+| Campo|Tipo|Descrição|Obrigatório
+| --------|---------|-------|-------|
 
 ## Requisição Json de exemplo
 
