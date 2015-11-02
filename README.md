@@ -56,19 +56,19 @@ Por exemplo, "Authorization: Basic ZnJlZDpmcmVk"
 | Email | String | Endereço de e-mail do comprador com no máximo 64 caracteres | Sim |
 | Gender | String | Sexo do comprador. Valores possíveis - 'Male' ou 'Female' | Sim |
 | Birthday | String | Data de aniversário do comprador. Formato aceito yyyy-mm-dd | Não |
-| HomePhone | String | Telefone residencial do comprador. Formatos aceitos: (DDD)999999999 ou DDI(DDD)999999999 | Sim |
-| MobilePhone | String | Telefone celular do comprador. Formatos aceitos: (DDD)999999999 ou DDI(DDD)999999999 | Sim |
-| WorkPhone | String | Telefone comercial do comprador. Formatos aceitos: (DDD)999999999 ou DDI(DDD)999999999 | Não |
+| HomePhone | String | Telefone residencial do comprador. Ex: 552123011822 | Sim |
+| MobilePhone | String | Telefone celular do comprador. Ex: 552197533011 | Sim |
+| WorkPhone | String | Telefone comercial do comprador. Ex: 552123011822 | Não |
 | BillingAddress | [BillingAddress](https://github.com/b-pay/pre-order/blob/master/README.md#billingaddress) | Objeto com os dados do endereço de cobrança |Sim|
 
 ## BillingAddress
 
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
-| Street | String | Nome da rua. Máximo de 64 caracteresres | Sim |
+| Street | String | Nome da rua. Máximo de 64 caracteres | Sim |
 | Number | String | Número | Sim |
 | ZipCode | String | CEP (sem traço) | Sim |
-| Complement | String | Complemento. Máximo de 64 caracteresres | Não |
+| Complement | String | Complemento. Máximo de 64 caracteres | Não |
 | District | String | Bairro. Máximo 64 caracteres | Sim |
 | City | String | Cidade. Máximo de 64 caracteres | Sim |
 | StateName | String | Estado. Máximo de 32 caracteres | Sim |
@@ -101,10 +101,10 @@ ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/mast
 ## ShippingAddress
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
-| Street | String | Nome da rua. Máximo de 64 caracteresres | Sim |
+| Street | String | Nome da rua. Máximo de 64 caracteres | Sim |
 | Number | String | Número | Sim |
 | ZipCode | String | CEP (sem traço) | Sim |
-| Complement | String | Complemento. Máximo de 64 caracteresres | Não |
+| Complement | String | Complemento. Máximo de 64 caracteres | Não |
 | District | String | Bairro. Máximo 64 caracteres | Sim |
 | City | String | Cidade. Máximo de 64 caracteres | Sim |
 | StateName | String | Estado. Máximo de 32 caracteres | Sim |
@@ -181,6 +181,11 @@ ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/mast
                 "AmountInCents": 100
             }
         ]
+    },
+    "Options": {
+        "SuccessUrl": "https://obrigado.com",
+        "FailureUrl": "https://falhou.com",
+        "NotificationUrl": "htts://status.com"
     }
 }
 ```
@@ -202,6 +207,8 @@ ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/mast
 ```
 
 ## Redirecionamento para página de checkout do bPay
+
+http://bpay-checkout.azurewebsites.net/get-checkout?id={TOKEN}
 
 ## Post de notificação
 
