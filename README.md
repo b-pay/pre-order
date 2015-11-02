@@ -1,4 +1,4 @@
-## Documentação simplificada do recurso Pre-order
+## Documentação do recurso Pre-order
 
 Antes de uma transação ser realizada através do BPay é necessário a criação de um token pelo ambiente server side da loja. 
 
