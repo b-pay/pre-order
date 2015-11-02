@@ -21,6 +21,7 @@ Conteúdo da documentação:
 * [Json de exemplo com resposta de criação de token](https://github.com/b-pay/pre-order/blob/master/README.md#json-de-exemplo-com-resposta-de-criação-de-token)
 * [Redirecionamento para página de checkout do bPay](https://github.com/b-pay/pre-order/blob/master/README.md#redirecionamento-para-página-de-checkout-do-bpay)
 * [Post de notificação](https://github.com/b-pay/pre-order/blob/master/README.md#post-de-notificação)
+* [Operação de consulta](https://github.com/b-pay/pre-order/blob/master/README.md#pperação-de-consulta)
 
 ## Autenticação
 
@@ -184,3 +185,5 @@ ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/mast
 ## Redirecionamento para página de checkout do bPay
 
 ## Post de notificação
+
+## Operação de consulta
