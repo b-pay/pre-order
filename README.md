@@ -12,8 +12,10 @@ Pontos importantes que devem ser observados:
    * Produção: 
    * Homologação: http://bpay-node.cloudapp.net/pre-order
 
-* [Autenticação](https://github.com/b-pay/pre-order/blob/master/README.md#autenticacao)
-* [Referência de campos para criação de um token](https://github.com/b-pay/pre-order/blob/master/README.md#referenciadoscampos)
+Conteúdo da documentação:
+
+* [Autenticação](https://github.com/b-pay/pre-order/blob/master/README.md#autenticação)
+* [Referência de campos para criação de um token](https://github.com/b-pay/pre-order/blob/master/README.md#referência-dos-campos)
 * Json de exemplo de criação de token
 * Referência de campos para resposta criação de um token
 * Json de exemplo de resposta de criação de token
