@@ -15,11 +15,12 @@ Pontos importantes que devem ser observados:
 Conteúdo da documentação:
 
 * [Autenticação](https://github.com/b-pay/pre-order/blob/master/README.md#autenticação)
-* [Referência de campos para criação de um token](https://github.com/b-pay/pre-order/blob/master/README.md#referência-dos-campos)
-* Json de exemplo de criação de token
-* Referência de campos para resposta criação de um token
-* Json de exemplo de resposta de criação de token
-* Post de notificação
+* [Referência de campos para criação de um token](https://github.com/b-pay/pre-order/blob/master/README.md#referência-de-campos-para-criação-de-um-token)
+* [Json de exemplo para criação de token](https://github.com/b-pay/pre-order/blob/master/README.md#json-de-exemplo-para-criação-de-token)
+* [Referência de campos da resposta da criação de um token](https://github.com/b-pay/pre-order/blob/master/README.md#referência-de-campos-da-resposta-da-criação-de-um-token)
+* [Json de exemplo com resposta de criação de token](https://github.com/b-pay/pre-order/blob/master/README.md#json-de-exemplo-com-resposta-de-criação-de-token)
+* [Redirecionamento para página de checkout do bPay](https://github.com/b-pay/pre-order/blob/master/README.md#redirecionamento-para-página-de-checkout-do-bpay)
+* [Post de notificação](https://github.com/b-pay/pre-order/blob/master/README.md#post-de-notificação)
 
 ## Autenticação
 
@@ -30,7 +31,7 @@ No header da requisição as chaves/valores abaixo devem ser informados:
 * Accept: application/json ou application/xml
 * Authorization: Basic
 
-## Referência dos campos
+## Referência de campos para criação de um token
 
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
@@ -111,7 +112,7 @@ ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/mast
 | Currency | String | Moeda da transação. Valor aceito - 'BRL' | Sim |
 | Installments | Array | | |
 
-## Requisição Json de exemplo
+## Json de exemplo para criação de token
 
 ```json
 {
@@ -175,3 +176,11 @@ ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/mast
     }
 }
 ```
+
+## Referência de campos da resposta da criação de um token
+
+## Json de exemplo com resposta de criação de token
+
+## Redirecionamento para página de checkout do bPay
+
+## Post de notificação
