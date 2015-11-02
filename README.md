@@ -114,7 +114,7 @@ ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/mast
 ## Payment
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
-| OperationType | String | Tipo da transação a ser realizada. Valores possíveis: 'AuthorizeAndCapture', 'AuthOnly' | Sim |
+| OperationType | String | Tipo da transação a ser realizada. Valores possíveis: 'AuthorizeAndCapture', 'Authorize' | Sim |
 | Currency | String | Moeda da transação. Valor aceito - 'BRL' | Sim |
 | Installments | Array | | |
 
