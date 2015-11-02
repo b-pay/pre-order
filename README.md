@@ -1,4 +1,4 @@
-## Documentação do recurso Pre-order
+## Documentação integração com BPay
 
 Antes de uma transação ser realizada através do BPay é necessário a criação de um token pelo ambiente server side da loja. 
 
@@ -11,6 +11,13 @@ Pontos importantes que devem ser observados:
 * A API do Mundi Checkout está disponível no seguinte endereço:
    * Produção: 
    * Homologação: http://bpay-node.cloudapp.net/pre-order
+
+* [Autenticação](https://github.com/b-pay/pre-order/blob/master/README.md#autenticacao)
+* [Referência de campos para criação de um token](https://github.com/b-pay/pre-order/blob/master/README.md#referenciadoscampos)
+* Json de exemplo de criação de token
+* Referência de campos para resposta criação de um token
+* Json de exemplo de resposta de criação de token
+* Post de notificação
 
 ## Autenticação
 
