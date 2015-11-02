@@ -5,8 +5,7 @@ Antes de uma transação ser realizada através do BPay é necessário a criaç�
 Pontos importantes que devem ser observados:
 * A solicitação do token deve ser realizada pela página de checkout da loja, página onde o cliente conclui todo o processo de carrinho de compra;
 * A identificação do pedido na loja deve ser único e enviado na solicitação de criação do token, campo OrderReference;
-* Caso a loja efetue a requisição de criação de um token e informe um número de pedido já existente retornaremos o mesmo token criado na primeira solicitação e o valor será atualizado para o novo valor enviado no campo AmountInCents;
-* Um token tem tempo de expiração padrão de XX minutos. Este tempo pode ser modificado no momento da requisição de criação do token, através do parâmetro ExpirationTimeInMinutes;
+* Um token tem tempo de expiração padrão de 30 minutos.
 * O token é criado através de um POST para o recurso 'pre-order';
 * A API do Mundi Checkout está disponível no seguinte endereço:
    * Produção: 
@@ -27,10 +26,8 @@ Conteúdo da documentação:
 
 No header da requisição as chaves/valores abaixo devem ser informados:
 
-* MerchantKey: ''
 * Content-Type: application/json
-* Accept: application/json ou application/xml
-* Authorization: Basic
+* Authorization: Basic (usuário e senha codificados em Base64)
 
 ## Referência de campos para criação de um token
 
