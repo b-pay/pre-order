@@ -45,6 +45,7 @@ Por exemplo, "Authorization: Basic ZnJlZDpmcmVk"
 | Order | [Order](https://github.com/b-pay/pre-order/blob/master/README.md#order) | Objeto com os dados do pedido    |Sim|
 | Shipping | [Shipping](https://github.com/b-pay/pre-order/blob/master/README.md#shipping) | Objeto com os dados de entrega    |Sim|
 | Payment | [Payment](https://github.com/b-pay/pre-order/blob/master/README.md#payment) | Objeto com as opções do pagamento   |Sim|
+| Options | [Options](https://github.com/b-pay/pre-order/blob/master/README.md#options) | Objeto com as opções gerais   |Sim|
 
 ## Buyer
 
@@ -116,6 +117,13 @@ ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/mast
 | OperationType | String | Tipo da transação a ser realizada. Valores possíveis: 'AuthorizeAndCapture', 'AuthOnly' | Sim |
 | Currency | String | Moeda da transação. Valor aceito - 'BRL' | Sim |
 | Installments | Array | | |
+
+## Options
+| Campo|Tipo|Descrição|Obrigatório |
+| --------|---------|-------|-------|
+| SuccessUrl | String | Url de sucesso. Está página será exibida caso o pagamento seja processado com sucesso. | Sim |
+| FailureUrl | String | Url de falha. Está página será exibida caso o pagamento não seja processado. | Sim |
+| NotificationUrl | String | Url de notificação de status. O status atual da transação será enviado para esta url | Sim |
 
 ## Json de exemplo para criação de token
 
