@@ -81,7 +81,7 @@ Por exemplo, "Authorization: Basic ZnJlZDpmcmVk"
 | OrderDescription | String | Descrição do pedido. Máximo de 256 caracteres | Não |
 | OrderReference | String | Identificador do pedido na loja. Máximo de 56 caracteres | Não |
 | AmountInCents | Integer | Valor do pedido | Sim |
-| Items | [Item](https://github.com/b-pay/pre-order/blob/master/README.md#item) | Coleção com itens do carrinho de compras | Sim |
+| Items | Array de [Item](https://github.com/b-pay/pre-order/blob/master/README.md#item) | Coleção com itens do carrinho de compras | Sim |
 
 ## Item
 | Campo|Tipo|Descrição|Obrigatório |
@@ -116,7 +116,14 @@ ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/mast
 | --------|---------|-------|-------|
 | OperationType | String | Tipo da transação a ser realizada. Valores possíveis: 'AuthorizeAndCapture', 'Authorize' | Sim |
 | Currency | String | Moeda da transação. Valor aceito - 'BRL' | Sim |
-| Installments | Array | | |
+| Installments | Array de [Installment](https://github.com/b-pay/pre-order/blob/master/README.md#installment) | Parcelas disponíveis para pagamento | Sim |
+
+## Installment
+| Campo|Tipo|Descrição|Obrigatório |
+| --------|---------|-------|-------|
+| Number | String | Número da parcela | Sim |
+| Text | String | Texto da parcela. Por exemplo, "1x de 100,00 sem juros" | Sim |
+| AmountInCents | Integer | Valor da parcela | Sim |
 
 ## Options
 | Campo|Tipo|Descrição|Obrigatório |
