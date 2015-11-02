@@ -29,11 +29,18 @@ No header da requisição as chaves/valores abaixo devem ser informados:
 * Content-Type: application/json
 * Authorization: Basic (usuário e senha codificados em Base64)
 
+### Como criar Header Authorization
+1. Concatenar usuário e senha e uma string. Por exemplo, "usuário:senha"
+2. Converter string para Base64
+3. Adicionar string em Base64 ao header Authorization
+
+Por exemplo, "Authorization: Basic ZnJlZDpmcmVk"
+
 ## Referência de campos para criação de um token
 
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
-| SellerKey  | UUID (string)   | Chave secreta para identificar o sistema que está enviando a requisição. Exemplo: "b733ccec-8099-11e5-8bcf-feff819cdc9f"    |Sim|
+| SellerKey  | UUID | Chave para identificar o sistema que está enviando a requisição. Exemplo: "b733ccec-8099-11e5-8bcf-feff819cdc9f"    |Sim|
 | Buyer | [Buyer](https://github.com/b-pay/pre-order/blob/master/README.md#buyer) | Objeto com os dados do comprador    |Sim|
 | Order | [Order](https://github.com/b-pay/pre-order/blob/master/README.md#order) | Objeto com os dados do pedido    |Sim|
 | Shipping | [Shipping](https://github.com/b-pay/pre-order/blob/master/README.md#shipping) | Objeto com os dados de entrega    |Sim|
@@ -43,7 +50,7 @@ No header da requisição as chaves/valores abaixo devem ser informados:
 
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
-| DocumentNumber | String | Numerto do documento do comprador| Sim |
+| DocumentNumber | String | Número do documento do comprador| Sim |
 | PersonType | String | Tipo de pessoa. Valores possíveis - 'Person' ou 'Company' | Sim |
 | Name | String | Nome do comprador com no máximo 64 caracteres | Sim |
 | Email | String | Endereço de e-mail do comprador com no máximo 64 caracteres | Sim |
@@ -51,7 +58,7 @@ No header da requisição as chaves/valores abaixo devem ser informados:
 | Birthday | String | Data de aniversário do comprador. Formato aceito yyyy-mm-dd | Não |
 | HomePhone | String | Telefone residencial do comprador. Formatos aceitos: (DDD)999999999 ou DDI(DDD)999999999 | Sim |
 | MobilePhone | String | Telefone celular do comprador. Formatos aceitos: (DDD)999999999 ou DDI(DDD)999999999 | Sim |
-| WorkPhone | String | Telefone comercial do comprador. Formatos aceitos: (DDD)999999999 ou DDI(DDD)999999999 | Sim |
+| WorkPhone | String | Telefone comercial do comprador. Formatos aceitos: (DDD)999999999 ou DDI(DDD)999999999 | Não |
 | BillingAddress | [BillingAddress](https://github.com/b-pay/pre-order/blob/master/README.md#billingaddress) | Objeto com os dados do endereço de cobrança |Sim|
 
 ## BillingAddress
@@ -114,7 +121,7 @@ ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/mast
 
 ```json
 {
-   "SecretKey": "8141BB01-EE19-4081-A4A4-97455505940E",
+   "SellerKey": "8141BB01-EE19-4081-A4A4-97455505940E",
    "Buyer":{
       "DocumentNumber":"12458253725",
       "PersonType": "Person",
@@ -122,8 +129,9 @@ ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/mast
       "Email":"cpecanhamundipagg.com",
       "Gender":"Male",
       "Birthday":"1988-08-02",
-      "Phone":"2123011826",
-      "Mobile":"21975338448",
+      "HomePhone":"2123011826",
+      "MobilePhone":"21975338448",
+      "WorkPhone":null,
       "BillingAddress":{
          "Street":"Rua da Quitanda",
          "Number":199,
@@ -131,7 +139,8 @@ ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/mast
          "Complement":"Décimo andar",
          "District":"Centro",
          "City":"Rio de Janeiro",
-         "StateName":"Rio de Janeiro"
+         "StateName":"Rio de Janeiro",
+         "Country":"Brasil"
       }
    },
    "Order":{
@@ -140,9 +149,9 @@ ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/mast
       "AmountInCents":9999,
       "Items": [
           {
-              "SKU": "",
-              "Name":"",
-              "Category":"",
+              "SKU": "123",
+              "Name":"Whey Protein Isolado",
+              "Category":"Suplementos",
               "PriceInCents":100,
               "UnitPriceInCents":10,
               "Quantity":10
@@ -158,7 +167,8 @@ ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/mast
             "Complement":"Décimo andar",
             "District":"Centro",
             "City":"Rio de Janeiro",
-            "StateName":"Rio de Janeiro"
+            "StateName":"Rio de Janeiro",
+            "Country":"Brasil"
         }
     },
     "Payment": {
@@ -177,7 +187,19 @@ ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/mast
 
 ## Referência de campos da resposta da criação de um token
 
+| Campo|Tipo|Descrição|Obrigatório |
+| --------|---------|-------|-------|
+| Token | UUID | Token de identificação do pedido | Sim |
+| ExpiresIn | Integer | Tempo para expiração do Token em <a href="http://www.epochconverter.com/" target="_blank">Epoch Time</a> | Sim |
+
 ## Json de exemplo com resposta de criação de token
+
+```json
+{
+   "Token":"71861931-9F71-4577-82D8-4F68AC2AEA17",
+   "ExpiresIn":1446495735
+}
+```
 
 ## Redirecionamento para página de checkout do bPay
 
