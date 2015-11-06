@@ -238,7 +238,7 @@ Detalhes dos atributos do objeto Notification:
 
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
-| Payment | [Payment](https://github.com/b-pay/pre-order/blob/master/README.md#payment) | Objeto que contém dados do pagamento | Sim |
+| Payment | [Payment](https://github.com/b-pay/pre-order/blob/master/README.md#payment-1) | Objeto que contém dados do pagamento | Sim |
 | Order | [Order](https://github.com/b-pay/pre-order/blob/master/README.md#order-1) | Objeto que contém dados do pagamento | Sim |
 
 ## Payment
