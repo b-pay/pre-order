@@ -249,5 +249,14 @@ Detalhes dos atributos do objeto Notification:
 | CurrentTransactionStatus | String | Status atual da transação no BPay | Sim |
 | CreateDate | String | Data de criação da transação. Formato yyyy-mm-ddThh:mm:ss | Sim |
 | LastChangeDate | String | Data da última alteração da de status da transação. Formato yyyy-mm-ddThh:mm:ss | Sim |
+| [Order](https://github.com/b-pay/pre-order/blob/master/README.md#billingaddress) | Objeto com os do pedido | Sim |
+
+## Order
+
+| Campo|Tipo|Descrição|Obrigatório |
+| --------|---------|-------|-------|
+| OrderKey | UUID | Identificador do pedido | Sim |
+| OrderReference | String | Identificador do pedido enviado pela loja | Sim |
+| OrderStatus | String | Status do pedido | Sim |
 
 ## Operação de consulta
