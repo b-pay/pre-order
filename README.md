@@ -227,4 +227,14 @@ http://bpay-checkout.azurewebsites.net/get-checkout?id={TOKEN}
 
 ## Post de notificação
 
+Após o processamento de uma transação pelo BPay, um POST de notificação contendo os dados da transação será enviado no formato JSON para a loja. Para isto, é necessário que a loja informe, no momento de criação do token, uma URL que irá receber e interpretar estes dados, campo Option.NotificationUrl.
+
+**É importante que a página que irá receber e interpretar o POST de notificação esteja preparada para receber novos campos além daqueles descritos no manual, para que possamos atualizar e acrescentar campos conforme necessário, de forma a sempre notificar a loja com as informações mais completas sobre suas transações.**
+
+O BPay efetuará três tentativas de notificação com intervalos de aproximadamente 15 minutos entre cada tentativa. Caso ocorra insucesso, o recurso de consulta, Query, está disponível na API para que a loja possa consultar os dados do pedido a qualquer momento. Para que o serviço de notificação do BPay entenda que houve sucesso na notificação, a URL da loja deve responder somente com o texto "OK" no corpo da mensagem de resposta.
+
+Detalhes dos atributos do objeto Notification:
+
+
+
 ## Operação de consulta
