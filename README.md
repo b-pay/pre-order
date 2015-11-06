@@ -266,7 +266,7 @@ Detalhes dos atributos do objeto Notification:
 | CreateDate | String | Data de criação da transação. Formato yyyy-mm-ddThh:mm:ss | Sim |
 | LastChangeDate | String | Data da última alteração da de status da transação. Formato yyyy-mm-ddThh:mm:ss | Sim |
 | CreditCard | [CreditCard](https://github.com/b-pay/pre-order/blob/master/README.md#creditcard) | Objeto com dados do cartão de crédito utilizado para realizar a transação | Sim |
-| History | Array de objeto [History] | Histórico de eventos realizadas em uma transação | Sim | 
+| History | Array de objeto [History](https://github.com/b-pay/pre-order/blob/master/README.md#history-1) | Histórico de eventos realizadas em uma transação | Sim | 
 
 ## CreditCard
 
