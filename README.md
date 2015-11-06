@@ -323,8 +323,8 @@ Detalhes dos atributos do objeto Notification:
             "InstallmentCount": 0,
             "PreviousTransactionStatus": null,
             "CurrentTransactionStatus": "Captured",
-            "CreateDate": "2015-11-0621: 21: 46",
-            "LastChangeDate": "2015-11-0621: 21: 46",
+            "CreateDate": "2015-11-06T21:21:46",
+            "LastChangeDate": "2015-11-06T21:21:46",
             "CreditCard": {
                 "MaskedCreditCardNumber": "411111****1111",
                 "HolderName": "carlosapdepaul",
@@ -333,7 +333,7 @@ Detalhes dos atributos do objeto Notification:
             "History": [
                 {
                     "TransactionStatus": "Captured",
-                    "Date": "2015-11-0621: 21: 46",
+                    "Date": "2015-11-06T21:21:46",
                     "AmountInCents": 32918,
                     "OperationType": "AuthorizeAndCapture",
                     "OrderStatus": "Paid",
