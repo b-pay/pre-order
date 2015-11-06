@@ -238,25 +238,60 @@ Detalhes dos atributos do objeto Notification:
 
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
+| Payment | [Payment](https://github.com/b-pay/pre-order/blob/master/README.md#payment) | Objeto que contém dados do pagamento | Sim |
+| Order | [Order](https://github.com/b-pay/pre-order/blob/master/README.md#order-1) | Objeto que contém dados do pagamento | Sim |
+
+## Payment
+
+| Campo|Tipo|Descrição|Obrigatório |
+| --------|---------|-------|-------|
+| TransactionType | String | Identificador do tipo de transação. Exemplo CreditCardTransaction" | Sim |
+| CreditCardTransaction | [CreditCardTransaction](https://github.com/b-pay/pre-order/blob/master/README.md#creditcardtransaction) | Objeto que contém dados da transação | Sim |
+
+## CreditCardTransaction
+
+| Campo|Tipo|Descrição|Obrigatório |
+| --------|---------|-------|-------|
 | SellerKey | UUID | Identificador da loja que realizou a transação | Sim |
 | Acquirer | String | Adquirente onde a transação foi processada | Sim |
-| TransactionReference | String | Identificador da transação na loja | Não |
 | TransactionKey | UUID | Identificador da transação no BPay | Sim |
+| TransactionReference | String | Identificador da transação na loja | Não |
 | TransactionIdentifier | String | Identificador da transação na adquirente | Sim |
 | UniqueSequencialNumber | String | Identificador único da transação na adquirente | Sim |
 | AuthorizationCode | String | Código de autorização na adquirente | Sim |
 | AmountInCents | Integer | Valor da transação em centavos | Sim |
+| InstallmentCount | Integer | Número de parcelas da transação | Sim |
 | PreviousTransactionStatus | String | Status prévio da transação no BPay | Sim |
 | CurrentTransactionStatus | String | Status atual da transação no BPay | Sim |
 | CreateDate | String | Data de criação da transação. Formato yyyy-mm-ddThh:mm:ss | Sim |
 | LastChangeDate | String | Data da última alteração da de status da transação. Formato yyyy-mm-ddThh:mm:ss | Sim |
-| Order | [Order](https://github.com/b-pay/pre-order/blob/master/README.md#order-1) | Objeto com os do pedido | Sim |
-| History | Array de [History](https://github.com/b-pay/pre-order/blob/master/README.md#history) | Objeto com os dados de histórico da transação | Sim |
+| CreditCard | [CreditCard](https://github.com/b-pay/pre-order/blob/master/README.md#creditcard) | Objeto com dados do cartão de crédito utilizado para realizar a transação | Sim |
+| History | Array de objeto [History] | Histórico de eventos realizadas em uma transação | Sim | 
+
+## CreditCard
+
+| Campo|Tipo|Descrição|Obrigatório |
+| --------|---------|-------|-------|
+| MaskedCreditCardNumber | String | Número truncado do cartão de crédito | Sim |
+| HolderName | String | Nome do portador do cartão | Sim |
+| CreditCardBrand | String | Bandeira do cartão de crédito | Sim |
+
+## History
+| Campo|Tipo|Descrição|Obrigatório |
+| --------|---------|-------|-------|
+| TransactionStatus | String | Status da transação. Exemplo "Captured" | Sim |
+| Date | String | Data em que o evento foi realizado. Formato yyyy-mm-ddThh:mm:ss | Sim |
+| AmountInCents | Integer | Valor de acordo com o evento realizado. Autorizado, capturado ou canelado | Sim |
+| OperationType | String | Tipo da transação realizada. Valores possíveis: 'AuthorizeAndCapture', 'Authorize' | Sim |
+| OrderStatus | String | Status do pedido | Sim |
+| AcquirerReturnCode | String | Código de retorno da adquirente de acordo com o evento realizado | Sim |
+| AcquirerMessage | String | Mensagem de retorno da adquirente de acordo com o evento realziado | Sim |
 
 ## Order
 
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
+| Token | UUID | Token utilizado para realizar a transação | Sim |
 | OrderKey | UUID | Identificador do pedido | Sim |
 | OrderReference | String | Identificador do pedido enviado pela loja | Sim |
 | OrderStatus | String | Status do pedido | Sim |
@@ -273,38 +308,47 @@ Detalhes dos atributos do objeto Notification:
 ## Json de exemplo do Post de notificação
 
 ```json
-{  
-	"SellerKey":"1a7848d4-2b7c-42af-9d04-98b792fb89ca",
-	"Acquirer":"Simulator",
-	"CreditCardBrand":"Visa",
-	"TransactionReference":"626bb3aa-c2b2-4bde-b3c7-11d264e5f71f",
-	"TransactionKey":"1a7848d4-2b7c-42af-9d04-98b792fb89ca",
-	"TransactionIdentifier":"420201",
-	"UniqueSequencialNumber":"113303",
-	"AuthorizationCode":"88913",
-	"AmountInCents":17852,
-	"PreviousTransactionStatus":"AuthorizedPendingCapture",
-	"CurrentTransactionStatus":"Captured",
-	"CreateDate":"2015-11-04T17:14:44.1154817Z",
-	"LastChangeDate":"2015-11-05T17:14:44.1154817Z",
-	"Order":{  
-		"OrderKey":"1a7848d4-2b7c-42af-9d04-98b792fb89ca",
-		"OrderReference":"Meu pedido2",
-		"OrderStatus":"Paid"
-	},
-	"History":[{
-		"AmountInCents":17852,
-		"OperationType":"Capture",
-		"OrderStatus":"Paid",
-		"TransactionStatus":"Captured",
-		"CreateDate":"2015-11-05T17:14:44.1154817Z"
-	},{
-		"AmountInCents":17852,
-		"OperationType":"Authorize",
-		"OrderStatus":"Opened",
-		"TransactionStatus":"AuthorizedPendingCapture",
-		"CreateDate":"2015-11-04T17:14:44.1154817Z"
-	}]
+{
+    "Payment": {
+        "TransactionType": "CreditCardTransaction",
+        "CreditCardTransaction": {
+            "SellerKey": "1a7848d4-2b7c-42af-9d04-98b792fb89ca",
+            "Acquirer": "Simulator",
+            "TransactionKey": "6fdd42b2-6c78-43e2-8a9a-22a507c593b8",
+            "TransactionReference": "853fa133-2715-4d25-828d-3c497f5ae5a7",
+            "TransactionIdentifier": "96311",
+            "UniqueSequencialNumber": "121073",
+            "AuthorizationCode": "100038",
+            "AmountInCents": 32918,
+            "InstallmentCount": 0,
+            "PreviousTransactionStatus": null,
+            "CurrentTransactionStatus": "Captured",
+            "CreateDate": "2015-11-0621: 21: 46",
+            "LastChangeDate": "2015-11-0621: 21: 46",
+            "CreditCard": {
+                "MaskedCreditCardNumber": "411111****1111",
+                "HolderName": "carlosapdepaul",
+                "CreditCardBrand": "Visa"
+            },
+            "History": [
+                {
+                    "TransactionStatus": "Captured",
+                    "Date": "2015-11-0621: 21: 46",
+                    "AmountInCents": 32918,
+                    "OperationType": "AuthorizeAndCapture",
+                    "OrderStatus": "Paid",
+                    "AcquirerReturnCode": "0",
+                    "AcquirerMessage": "Simulator|Transaçãodesimulaçãoautorizadacomsucesso"
+                }
+            ]
+        }
+    },
+    "Order": {
+        "Token": "767ac3e0-84cc-11e5-b9d9-7bfe49f91a01",
+        "OrderKey": "674bc75b-84a4-4026-9f2a-ada73920a1a1",
+        "OrderReference": "Meupedido2",
+        "OrderStatus": "Paid"
+    }
 }
 ```
 
