@@ -249,7 +249,8 @@ Detalhes dos atributos do objeto Notification:
 | CurrentTransactionStatus | String | Status atual da transação no BPay | Sim |
 | CreateDate | String | Data de criação da transação. Formato yyyy-mm-ddThh:mm:ss | Sim |
 | LastChangeDate | String | Data da última alteração da de status da transação. Formato yyyy-mm-ddThh:mm:ss | Sim |
-| [Order](https://github.com/b-pay/pre-order/blob/master/README.md#billingaddress) | Objeto com os do pedido | Sim |
+| Order | [Order](https://github.com/b-pay/pre-order/blob/master/README.md#order-1) | Objeto com os do pedido | Sim |
+| History | Array de [History](https://github.com/b-pay/pre-order/blob/master/README.md#history) | Objeto com os dados de histórico da transação | Sim |
 
 ## Order
 
@@ -258,5 +259,14 @@ Detalhes dos atributos do objeto Notification:
 | OrderKey | UUID | Identificador do pedido | Sim |
 | OrderReference | String | Identificador do pedido enviado pela loja | Sim |
 | OrderStatus | String | Status do pedido | Sim |
+
+## History
+| Campo|Tipo|Descrição|Obrigatório |
+| --------|---------|-------|-------|
+| AmountInCents | Integer | Valor da transação em centavos | Sim |
+| OperationType | String | Tipo da transação realizada. Valores possíveis: 'AuthorizeAndCapture', 'Authorize'  | Sim |
+| OrderStatus | String | Status do pedido | Sim |
+| TransactionStatus | String | Status da transação | Sim |
+| CreateDate | String | Data de criação da transação. Formato yyyy-mm-ddThh:mm:ss | Sim |
 
 ## Operação de consulta
