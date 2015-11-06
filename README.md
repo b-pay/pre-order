@@ -235,6 +235,19 @@ O BPay efetuará três tentativas de notificação com intervalos de aproximadam
 
 Detalhes dos atributos do objeto Notification:
 
-
+| Campo|Tipo|Descrição|Obrigatório |
+| --------|---------|-------|-------|
+| SellerKey | UUID | Identificador da loja que realizou a transação | Sim |
+| Acquirer | String | Adquirente onde a transação foi processada | Sim |
+| TransactionReference | String | Identificador da transação na loja | Não |
+| TransactionKey | UUID | Identificador da transação no BPay | Sim |
+| TransactionIdentifier | String | Identificador da transação na adquirente | Sim |
+| UniqueSequencialNumber | String | Identificador único da transação na adquirente | Sim |
+| AuthorizationCode | String | Código de autorização na adquirente | Sim |
+| AmountInCents | Integer | Valor da transação em centavos | Sim |
+| PreviousTransactionStatus | String | Status prévio da transação no BPay | Sim |
+| CurrentTransactionStatus | String | Status atual da transação no BPay | Sim |
+| CreateDate | String | Data de criação da transação. Formato yyyy-mm-ddThh:mm:ss | Sim |
+| LastChangeDate | String | Data da última alteração da de status da transação. Formato yyyy-mm-ddThh:mm:ss | Sim |
 
 ## Operação de consulta
