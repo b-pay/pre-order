@@ -22,6 +22,10 @@ Conteúdo da documentação:
 * [Post de notificação](https://github.com/b-pay/pre-order/blob/master/README.md#post-de-notificação)
 * [Json de exemplo do Post de notificação](https://github.com/b-pay/pre-order/blob/master/README.md#json-de-exemplo-do-post-de-notificação)
 * [Operação de consulta](https://github.com/b-pay/pre-order/blob/master/README.md#pperação-de-consulta)
+* [Referência de campos a operação de consulta](xxx)
+* [Json de exemplo da operação de consulta](https://github.com/b-pay/pre-order/blob/master/README.md#json-de-exemplo-para-criação-de-token)
+* [Referência de campos da resposta de uma operação de consulta](https://github.com/b-pay/pre-order/blob/master/README.md#referência-de-campos-da-resposta-da-criação-de-um-token)
+* [Json de exemplo com resposta de uma operação de consulta](xxxx)
 
 ## Autenticação
 
@@ -353,3 +357,63 @@ Detalhes dos atributos do objeto Notification:
 ```
 
 ## Operação de consulta
+
+Para consultar transações do bPay existe o recurso /Query. Os parâmetros de pesquisa disponíveis são TransactionKey ou OrderReference.
+
+## Referência de campos a operação de consulta
+
+## Json de exemplo da operação de consulta
+
+## Referência de campos da resposta de uma operação de consulta
+
+## Json de exemplo com resposta de uma operação de consulta
+
+```json
+{
+    "TransactionCount": 123,
+    "TransactionDataCollection": [
+        {
+            "Payment": {
+                "TransactionType": "CreditCardTransaction",
+                "CreditCardTransaction": {
+                    "SellerKey": "1a7848d4-2b7c-42af-9d04-98b792fb89ca",
+                    "Acquirer": "Simulator",
+                    "TransactionKey": "6fdd42b2-6c78-43e2-8a9a-22a507c593b8",
+                    "TransactionReference": "853fa133-2715-4d25-828d-3c497f5ae5a7",
+                    "TransactionIdentifier": "96311",
+                    "UniqueSequencialNumber": "121073",
+                    "AuthorizationCode": "100038",
+                    "AmountInCents": 32918,
+                    "InstallmentCount": 0,
+                    "PreviousTransactionStatus": null,
+                    "CurrentTransactionStatus": "Captured",
+                    "CreateDate": "2015-11-06T21:21:46",
+                    "LastChangeDate": "2015-11-06T21:21:46",
+                    "CreditCard": {
+                        "MaskedCreditCardNumber": "411111****1111",
+                        "HolderName": "carlosapdepaul",
+                        "CreditCardBrand": "Visa"
+                    },
+                    "History": [
+                        {
+                            "TransactionStatus": "Captured",
+                            "Date": "2015-11-06T21:21:46",
+                            "AmountInCents": 32918,
+                            "OperationType": "AuthorizeAndCapture",
+                            "OrderStatus": "Paid",
+                            "AcquirerReturnCode": "0",
+                            "AcquirerMessage": "Simulator|Transaçãodesimulaçãoautorizadacomsucesso"
+                        }
+                    ]
+                }
+            },
+            "Order": {
+                "Token": "767ac3e0-84cc-11e5-b9d9-7bfe49f91a01",
+                "OrderKey": "674bc75b-84a4-4026-9f2a-ada73920a1a1",
+                "OrderReference": "Meupedido2",
+                "OrderStatus": "Paid"
+            }
+        }
+    ]
+}
+```
