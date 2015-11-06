@@ -20,6 +20,7 @@ Conteúdo da documentação:
 * [Json de exemplo com resposta de criação de token](https://github.com/b-pay/pre-order/blob/master/README.md#json-de-exemplo-com-resposta-de-criação-de-token)
 * [Redirecionamento para página de checkout do bPay](https://github.com/b-pay/pre-order/blob/master/README.md#redirecionamento-para-página-de-checkout-do-bpay)
 * [Post de notificação](https://github.com/b-pay/pre-order/blob/master/README.md#post-de-notificação)
+* [Json de exemplo do Post de notificação](https://github.com/b-pay/pre-order/blob/master/README.md#json-de-exemplo-do-post-de-notificação)
 * [Operação de consulta](https://github.com/b-pay/pre-order/blob/master/README.md#pperação-de-consulta)
 
 ## Autenticação
@@ -268,5 +269,43 @@ Detalhes dos atributos do objeto Notification:
 | OrderStatus | String | Status do pedido | Sim |
 | TransactionStatus | String | Status da transação | Sim |
 | CreateDate | String | Data de criação da transação. Formato yyyy-mm-ddThh:mm:ss | Sim |
+
+## Json de exemplo do Post de notificação
+
+```json
+{  
+	"SellerKey":"1a7848d4-2b7c-42af-9d04-98b792fb89ca",
+	"Acquirer":"Simulator",
+	"CreditCardBrand":"Visa",
+	"TransactionReference":"626bb3aa-c2b2-4bde-b3c7-11d264e5f71f",
+	"TransactionKey":"1a7848d4-2b7c-42af-9d04-98b792fb89ca",
+	"TransactionIdentifier":"420201",
+	"UniqueSequencialNumber":"113303",
+	"AuthorizationCode":"88913",
+	"AmountInCents":17852,
+	"PreviousTransactionStatus":"AuthorizedPendingCapture",
+	"CurrentTransactionStatus":"Captured",
+	"CreateDate":"2015-11-04T17:14:44.1154817Z",
+	"LastChangeDate":"2015-11-05T17:14:44.1154817Z",
+	"Order":{  
+		"OrderKey":"1a7848d4-2b7c-42af-9d04-98b792fb89ca",
+		"OrderReference":"Meu pedido2",
+		"OrderStatus":"Paid"
+	},
+	"History":[{
+		"AmountInCents":17852,
+		"OperationType":"Capture",
+		"OrderStatus":"Paid",
+		"TransactionStatus":"Captured",
+		"CreateDate":"2015-11-05T17:14:44.1154817Z"
+	},{
+		"AmountInCents":17852,
+		"OperationType":"Authorize",
+		"OrderStatus":"Opened",
+		"TransactionStatus":"AuthorizedPendingCapture",
+		"CreateDate":"2015-11-04T17:14:44.1154817Z"
+	}]
+}
+```
 
 ## Operação de consulta
