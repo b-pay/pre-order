@@ -300,15 +300,6 @@ Detalhes dos atributos do objeto Notification:
 | OrderReference | String | Identificador do pedido enviado pela loja | Sim |
 | OrderStatus | String | Status do pedido | Sim |
 
-## History
-| Campo|Tipo|Descrição|Obrigatório |
-| --------|---------|-------|-------|
-| AmountInCents | Integer | Valor da transação em centavos | Sim |
-| OperationType | String | Tipo da transação realizada. Valores possíveis: 'AuthorizeAndCapture', 'Authorize'  | Sim |
-| OrderStatus | String | Status do pedido | Sim |
-| TransactionStatus | String | Status da transação | Sim |
-| CreateDate | String | Data de criação da transação. Formato yyyy-mm-ddThh:mm:ss | Sim |
-
 ## Json de exemplo do Post de notificação
 
 ```json
