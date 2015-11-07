@@ -32,7 +32,7 @@ No header da requisição as chaves/valores abaixo devem ser informados:
 * Content-Type: application/json
 * Authorization: Basic (usuário e senha codificados em Base64)
 
-### Como criar Header Authorization
+#### Como criar Header Authorization
 1. Concatenar usuário e senha e uma string. Por exemplo, "usuário:senha"
 2. Converter string para Base64
 3. Adicionar string em Base64 ao header Authorization
@@ -52,7 +52,7 @@ Para criar um token é necessário enviar um POST para o recurso /pre-order.
 | Payment | [Payment](https://github.com/b-pay/pre-order/blob/master/README.md#payment) | Objeto com as opções do pagamento   |Sim|
 | Options | [Options](https://github.com/b-pay/pre-order/blob/master/README.md#options) | Objeto com as opções gerais   |Sim|
 
-## Buyer
+#### Buyer
 
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
@@ -67,7 +67,7 @@ Para criar um token é necessário enviar um POST para o recurso /pre-order.
 | WorkPhone | String | Telefone comercial do comprador. Ex: 552123011822 | Não |
 | BillingAddress | [BillingAddress](https://github.com/b-pay/pre-order/blob/master/README.md#billingaddress) | Objeto com os dados do endereço de cobrança |Sim|
 
-## BillingAddress
+#### BillingAddress
 
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
@@ -80,7 +80,7 @@ Para criar um token é necessário enviar um POST para o recurso /pre-order.
 | StateName | String | Estado. Máximo de 32 caracteres | Sim |
 | Country | String | País. Máximo de 32 caracteres | Sim |
 
-## Order
+#### Order
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
 | OrderDescription | String | Descrição do pedido. Máximo de 256 caracteres | Não |
@@ -88,7 +88,7 @@ Para criar um token é necessário enviar um POST para o recurso /pre-order.
 | AmountInCents | Integer | Valor do pedido | Sim |
 | Items | Array de [Item](https://github.com/b-pay/pre-order/blob/master/README.md#item) | Coleção com itens do carrinho de compras | Sim |
 
-## Item
+#### Item
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
 | SKU | String | Identificador do produto | Não |
@@ -98,13 +98,13 @@ Para criar um token é necessário enviar um POST para o recurso /pre-order.
 | UnitPriceInCents | Integer | Valor unitário do item no carrinho | Sim |
 | Quantity | Integer | Quantidade do item | Sim |
 
-## Shipping
+#### Shipping
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
 | CostInCents | Integer | Valor do frete | Não |
 ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/master/README.md#shippingaddress) | Objeto com dados do endereço de entrega | Sim |
 
-## ShippingAddress
+#### ShippingAddress
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
 | Street | String | Nome da rua. Máximo de 64 caracteres | Sim |
@@ -116,21 +116,21 @@ ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/mast
 | StateName | String | Estado. Máximo de 32 caracteres | Sim |
 | Country | String | País. Máximo de 32 caracteres | Sim |
 
-## Payment
+#### Payment
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
 | OperationType | String | Tipo da transação a ser realizada. Valores possíveis: 'AuthorizeAndCapture', 'Authorize' | Sim |
 | Currency | String | Moeda da transação. Valor aceito - 'BRL' | Sim |
 | Installments | Array de [Installment](https://github.com/b-pay/pre-order/blob/master/README.md#installment) | Parcelas disponíveis para pagamento | Sim |
 
-## Installment
+#### Installment
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
 | Number | String | Número da parcela | Sim |
 | Text | String | Texto da parcela. Por exemplo, "1x de 100,00 sem juros" | Sim |
 | AmountInCents | Integer | Valor da parcela | Sim |
 
-## Options
+#### Options
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
 | SuccessUrl | String | Url de sucesso. Está página será exibida caso o pagamento seja processado com sucesso. | Sim |
@@ -245,14 +245,14 @@ Detalhes dos atributos do objeto Notification:
 | Payment | [Payment](https://github.com/b-pay/pre-order/blob/master/README.md#payment-1) | Objeto que contém dados do pagamento | Sim |
 | Order | [Order](https://github.com/b-pay/pre-order/blob/master/README.md#order-1) | Objeto que contém dados do pagamento | Sim |
 
-## Payment
+#### Payment
 
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
 | TransactionType | String | Identificador do tipo de transação. Exemplo CreditCardTransaction" | Sim |
 | CreditCardTransaction | [CreditCardTransaction](https://github.com/b-pay/pre-order/blob/master/README.md#creditcardtransaction) | Objeto que contém dados da transação | Sim |
 
-## CreditCardTransaction
+#### CreditCardTransaction
 
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
@@ -272,7 +272,7 @@ Detalhes dos atributos do objeto Notification:
 | CreditCard | [CreditCard](https://github.com/b-pay/pre-order/blob/master/README.md#creditcard) | Objeto com dados do cartão de crédito utilizado para realizar a transação | Sim |
 | History | Array de [History](https://github.com/b-pay/pre-order/blob/master/README.md#history-1) | Histórico de eventos realizadas em uma transação | Sim | 
 
-## CreditCard
+#### CreditCard
 
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
@@ -280,7 +280,7 @@ Detalhes dos atributos do objeto Notification:
 | HolderName | String | Nome do portador do cartão | Sim |
 | CreditCardBrand | String | Bandeira do cartão de crédito | Sim |
 
-## History
+#### History
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
 | TransactionStatus | String | Status da transação. Exemplo "Captured" | Sim |
@@ -291,7 +291,7 @@ Detalhes dos atributos do objeto Notification:
 | AcquirerReturnCode | String | Código de retorno da adquirente de acordo com o evento realizado | Sim |
 | AcquirerMessage | String | Mensagem de retorno da adquirente de acordo com o evento realziado | Sim |
 
-## Order
+#### Order
 
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
@@ -300,7 +300,7 @@ Detalhes dos atributos do objeto Notification:
 | OrderReference | String | Identificador do pedido enviado pela loja | Sim |
 | OrderStatus | String | Status do pedido | Sim |
 
-## Json de exemplo do Post de notificação
+#### Json de exemplo do Post de notificação
 
 ```json
 {
@@ -360,7 +360,7 @@ Exemplo: http://bpay-node.cloudapp.net/transactions/TransactionKey=6fdd42b2-6c78
 | TransactionCount | Integer | Número de transações encontradas | Sim |
 | TransactionDataCollection | Array de [TransactionDataCollection](https://github.com/b-pay/pre-order/blob/master/README.md#transactiondatacollection) | Objeto com dados das transações | Sim |
 
-## TransactionDataCollection
+#### TransactionDataCollection
 
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
