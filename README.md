@@ -238,7 +238,7 @@ Após o processamento de uma transação pelo BPay, um POST de notificação con
 
 O BPay efetuará três tentativas de notificação com intervalos de aproximadamente 15 minutos entre cada tentativa. Caso ocorra insucesso, o recurso de consulta, Query, está disponível na API para que a loja possa consultar os dados do pedido a qualquer momento. Para que o serviço de notificação do BPay entenda que houve sucesso na notificação, a URL da loja deve responder somente com o texto "OK" no corpo da mensagem de resposta.
 
-Detalhes dos atributos do objeto Notification:
+Detalhes dos campos enviados no Post de Notificação:
 
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
