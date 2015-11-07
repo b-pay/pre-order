@@ -242,11 +242,13 @@ ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/mast
 ``` json
 [
   {
+    "errorcode": "400",
     "param": "Buyer.Email",
     "msg": "Invalid value",
     "value": "cpecanhamundipagg.com"
   },
   {
+    "errorcode": "400",
     "param": "Buyer.Birthday",
     "msg": "Invalid value",
     "value": "1988-08-"
