@@ -237,7 +237,7 @@ ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/mast
 | param | String | Identifica campo com o dado inválido | Sim, caso seja um erro 400 |
 | value | String | Valor inválido informado no campo em questão | Sim, caso seja um erro 400 |
 
-#### Json de exemplo com resposta de campo com valor inválido
+#### Json de exemplo com resposta de erro na criação do token
 
 ``` json
 [
