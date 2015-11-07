@@ -228,13 +228,14 @@ ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/mast
 }
 ```
 
-#### Dados inválidos enviados para criação do token - http 400
+#### Erro na criação do token - http 400 ou 500
 
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
-| param | String | Identifica campo com o dado inválido | Sim |
+| errorcode | Integer | Código que identifica tipo de erro. Valores possíveis, 400 - indica que algum campo foi enviado com valor inválido ou 500 - erro interno na criação do token | Sim |
 | msg | String | Descrição do erro | Sim |
-| value | String | Valor inválido informado no campo em questão | Sim |
+| param | String | Identifica campo com o dado inválido | Sim, caso seja um erro 400 |
+| value | String | Valor inválido informado no campo em questão | Sim, caso seja um erro 400 |
 
 #### Json de exemplo com resposta de campo com valor inválido
 
