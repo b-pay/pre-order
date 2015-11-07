@@ -367,16 +367,7 @@ Exemplo: http://bpay-node.cloudapp.net/transactions/TransactionKey=6fdd42b2-6c78
 | Payment | [Payment](https://github.com/b-pay/pre-order/blob/master/README.md#payment-1) | Objeto que contém dados do pagamento | Sim |
 | Order | [Order](https://github.com/b-pay/pre-order/blob/master/README.md#order-1) | Objeto que contém dados do pagamento | Sim |
 
-```json
-Obs: Os objetos *Payment* e *Order* possuem os mesmos campos descritos na seção do Post de Notificação. Sendo assim, para simplificar a documentação, o link dos objetos citados acima faz referência aos mesmos objetos do Post de Notificação.
 ```
-```html
-Obs: Os objetos *Payment* e *Order* possuem os mesmos campos descritos na seção do Post de Notificação. Sendo assim, para simplificar a documentação, o link dos objetos citados acima faz referência aos mesmos objetos do Post de Notificação.
-```
-```js
-Obs: Os objetos *Payment* e *Order* possuem os mesmos campos descritos na seção do Post de Notificação. Sendo assim, para simplificar a documentação, o link dos objetos citados acima faz referência aos mesmos objetos do Post de Notificação.
-```
-```css
 Obs: Os objetos *Payment* e *Order* possuem os mesmos campos descritos na seção do Post de Notificação. Sendo assim, para simplificar a documentação, o link dos objetos citados acima faz referência aos mesmos objetos do Post de Notificação.
 ```
 
