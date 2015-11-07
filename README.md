@@ -349,7 +349,7 @@ Detalhes dos atributos do objeto Notification:
 
 ## Operação de consulta
 
-Para consultar transações do bPay é necessário enviar um GET para o recurso /transactions. Os parâmetros de pesquisa disponíveis são **TransactionKey**, identificador da transação no bPay, **OrderReference**, identificador do pedido na loja.
+Para consultar transações do bPay é necessário enviar um GET para o recurso /transactions. Os parâmetros de pesquisa disponíveis são *TransactionKey*, identificador da transação no bPay, *OrderReference*, identificador do pedido na loja.
 
 Exemplo: http://bpay-node.cloudapp.net/transactions/TransactionKey=6fdd42b2-6c78-43e2-8a9a-22a507c593b8
 
@@ -364,12 +364,21 @@ Exemplo: http://bpay-node.cloudapp.net/transactions/TransactionKey=6fdd42b2-6c78
 
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
-| Campo|Tipo|Descrição|Obrigatório |
-| --------|---------|-------|-------|
-| Payment | [Payment](https://github.com/b-pay/pre-order/blob/master/README.md#payment-2) | Objeto que contém dados do pagamento | Sim |
-| Order | [Order](https://github.com/b-pay/pre-order/blob/master/README.md#order-2) | Objeto que contém dados do pagamento | Sim |
+| Payment | [Payment](https://github.com/b-pay/pre-order/blob/master/README.md#payment-1) | Objeto que contém dados do pagamento | Sim |
+| Order | [Order](https://github.com/b-pay/pre-order/blob/master/README.md#order-1) | Objeto que contém dados do pagamento | Sim |
 
-
+```json
+   // code for coloring
+```
+```html
+   // code for coloring
+```
+```js
+   // code for coloring
+```
+```css
+   // code for coloring
+```
 
 ## Json de exemplo com resposta de uma operação de consulta
 
