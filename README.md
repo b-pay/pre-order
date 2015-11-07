@@ -212,6 +212,8 @@ ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/mast
 
 ## Referência de campos da resposta da criação de um token
 
+#### Token criado com sucesso - http 200
+
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
 | Token | UUID | Token de identificação do pedido | Sim |
@@ -224,6 +226,31 @@ ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/mast
    "Token":"71861931-9F71-4577-82D8-4F68AC2AEA17",
    "ExpiresIn":1446495735
 }
+```
+
+#### Dados inválidos enviados para criação do token - http 400
+
+| Campo|Tipo|Descrição|Obrigatório |
+| --------|---------|-------|-------|
+| param | String | Identifica campo com o dado inválido | Sim |
+| msg | String | Descrição do erro | Sim |
+| value | String | Valor inválido informado no campo em questão | Sim |
+
+#### Json de exemplo com resposta de campo com valor inválido
+
+``` json
+[
+  {
+    "param": "Buyer.Email",
+    "msg": "Invalid value",
+    "value": "cpecanhamundipagg.com"
+  },
+  {
+    "param": "Buyer.Birthday",
+    "msg": "Invalid value",
+    "value": "1988-08-"
+  }
+]
 ```
 
 ## Redirecionamento para página de checkout do bPay
