@@ -9,7 +9,7 @@ Pontos importantes que devem ser observados:
 * O token é criado através de um POST para o recurso 'pre-order';
 * A API do Mundi Checkout está disponível no seguinte endereço:
    * Produção: 
-   * Homologação: http://bpay-node.cloudapp.net/pre-order
+   * Homologação: http://bpay-node.cloudapp.net
 
 Conteúdo da documentação:
 
@@ -22,8 +22,6 @@ Conteúdo da documentação:
 * [Post de notificação](https://github.com/b-pay/pre-order/blob/master/README.md#post-de-notificação)
 * [Json de exemplo do Post de notificação](https://github.com/b-pay/pre-order/blob/master/README.md#json-de-exemplo-do-post-de-notificação)
 * [Operação de consulta](https://github.com/b-pay/pre-order/blob/master/README.md#pperação-de-consulta)
-* [Referência de campos a operação de consulta](xxx)
-* [Json de exemplo da operação de consulta](https://github.com/b-pay/pre-order/blob/master/README.md#json-de-exemplo-para-criação-de-token)
 * [Referência de campos da resposta de uma operação de consulta](https://github.com/b-pay/pre-order/blob/master/README.md#referência-de-campos-da-resposta-da-criação-de-um-token)
 * [Json de exemplo com resposta de uma operação de consulta](xxxx)
 
@@ -42,6 +40,8 @@ No header da requisição as chaves/valores abaixo devem ser informados:
 Por exemplo, "Authorization: Basic ZnJlZDpmcmVk"
 
 ## Referência de campos para criação de um token
+
+Para criar um token é necessário enviar um POST para o recurso /pre-order.
 
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
@@ -358,13 +358,27 @@ Detalhes dos atributos do objeto Notification:
 
 ## Operação de consulta
 
-Para consultar transações do bPay existe o recurso /Query. Os parâmetros de pesquisa disponíveis são TransactionKey ou OrderReference.
+Para consultar transações do bPay é necessário enviar um GET para o recurso /transactions. Os parâmetros de pesquisa disponíveis são **TransactionKey**, identificador da transação no bPay, **OrderReference**, identificador do pedido na loja.
 
-## Referência de campos a operação de consulta
-
-## Json de exemplo da operação de consulta
+Exemplo: http://bpay-node.cloudapp.net/transactions/TransactionKey=6fdd42b2-6c78-43e2-8a9a-22a507c593b8
 
 ## Referência de campos da resposta de uma operação de consulta
+
+| Campo|Tipo|Descrição|Obrigatório |
+| --------|---------|-------|-------|
+| TransactionCount | Integer | Número de transações encontradas | Sim |
+| TransactionDataCollection | Array de [TransactionDataCollection](https://github.com/b-pay/pre-order/blob/master/README.md#transactiondatacollection) | Objeto com dados das transações | Sim |
+
+## TransactionDataCollection
+
+| Campo|Tipo|Descrição|Obrigatório |
+| --------|---------|-------|-------|
+| Campo|Tipo|Descrição|Obrigatório |
+| --------|---------|-------|-------|
+| Payment | [Payment](https://github.com/b-pay/pre-order/blob/master/README.md#payment-2) | Objeto que contém dados do pagamento | Sim |
+| Order | [Order](https://github.com/b-pay/pre-order/blob/master/README.md#order-2) | Objeto que contém dados do pagamento | Sim |
+
+
 
 ## Json de exemplo com resposta de uma operação de consulta
 
