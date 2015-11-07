@@ -351,7 +351,7 @@ Detalhes dos campos enviados no Post de Notificação:
 
 Para consultar transações do bPay é necessário enviar um GET para o recurso /transactions. Os parâmetros de pesquisa disponíveis são *TransactionKey*, identificador da transação no bPay, *OrderReference*, identificador do pedido na loja.
 
-Exemplo: http://bpay-node.cloudapp.net/transactions/TransactionKey=6fdd42b2-6c78-43e2-8a9a-22a507c593b8
+Exemplo: http://bpay-node.cloudapp.net/transactions?TransactionKey=6fdd42b2-6c78-43e2-8a9a-22a507c593b8
 
 ## Referência de campos da resposta de uma operação de consulta
 
