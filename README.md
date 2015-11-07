@@ -21,7 +21,7 @@ Conteúdo da documentação:
 * [Redirecionamento para página de checkout do bPay](https://github.com/b-pay/pre-order/blob/master/README.md#redirecionamento-para-página-de-checkout-do-bpay)
 * [Post de notificação](https://github.com/b-pay/pre-order/blob/master/README.md#post-de-notificação)
 * [Json de exemplo do Post de notificação](https://github.com/b-pay/pre-order/blob/master/README.md#json-de-exemplo-do-post-de-notificação)
-* [Operação de consulta](https://github.com/b-pay/pre-order/blob/master/README.md#pperação-de-consulta)
+* [Operação de consulta](https://github.com/b-pay/pre-order/blob/master/README.md#operação-de-consulta)
 * [Referência de campos da resposta de uma operação de consulta](https://github.com/b-pay/pre-order/blob/master/README.md#referência-de-campos-da-resposta-da-criação-de-um-token)
 * [Json de exemplo com resposta de uma operação de consulta](xxxx)
 
