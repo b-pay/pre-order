@@ -7,7 +7,7 @@ Pontos importantes que devem ser observados:
 * A identificação do pedido na loja deve ser único e enviado na solicitação de criação do token, campo OrderReference;
 * Um token tem tempo de expiração padrão de 30 minutos.
 * O token é criado através de um POST para o recurso 'pre-order';
-* A API do Mundi Checkout está disponível no seguinte endereço:
+* A API do BPay está disponível no seguinte endereço:
    * Produção: 
    * Homologação: http://bpay-node.cloudapp.net
 
@@ -121,6 +121,7 @@ ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/mast
 | --------|---------|-------|-------|
 | OperationType | String | Tipo da transação a ser realizada. Valores possíveis: 'AuthorizeAndCapture', 'Authorize' | Sim |
 | Currency | String | Moeda da transação. Valor aceito - 'BRL' | Sim |
+| SoftDescriptor | String | Texto que aparecerá na fatura do comprador. Máximo de 12 caracteres | Sim |
 | Installments | Array de [Installment](https://github.com/b-pay/pre-order/blob/master/README.md#installment) | Parcelas disponíveis para pagamento | Sim |
 
 #### Installment
@@ -128,31 +129,29 @@ ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/mast
 | --------|---------|-------|-------|
 | Number | String | Número da parcela | Sim |
 | Text | String | Texto da parcela. Por exemplo, "1x de 100,00 sem juros" | Sim |
-| AmountInCents | Integer | Valor da parcela | Sim |
+| AmountInCents | Integer | Valor do pedido | Não |
 
 #### Options
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
 | SuccessUrl | String | Url de sucesso. Está página será exibida caso o pagamento seja processado com sucesso. | Sim |
-| FailureUrl | String | Url de falha. Está página será exibida caso o pagamento não seja processado. | Sim |
 | NotificationUrl | String | Url de notificação de status. O status atual da transação será enviado para esta url | Sim |
 
 ## Json de exemplo para criação de token
 
 ```json
-{
-   "SellerKey": "8141BB01-EE19-4081-A4A4-97455505940E",
-   "Buyer":{
-      "DocumentNumber":"12458253725",
-      "PersonType": "Person",
-      "Name":"Carlos Peçanha",
-      "Email":"cpecanhamundipagg.com",
+{  
+   "SellerKey":"1A7848D4-2B7C-42AF-9D04-98B792FB89CA",
+   "Buyer":{  
+      "DocumentNumber":"11111111111",
+      "PersonType":"Person",
+      "Name":"Ciclano",
+      "Email":"ciclano@comprador.com",
       "Gender":"Male",
       "Birthday":"1988-08-02",
-      "HomePhone":"2123011826",
-      "MobilePhone":"21975338448",
-      "WorkPhone":null,
-      "BillingAddress":{
+      "HomePhone":"2122222222",
+      "MobilePhone":"2199999999",
+      "BillingAddress":{  
          "Street":"Rua da Quitanda",
          "Number":199,
          "ZipCode":"20091005",
@@ -160,53 +159,51 @@ ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/mast
          "District":"Centro",
          "City":"Rio de Janeiro",
          "StateName":"Rio de Janeiro",
-         "Country":"Brasil"
+		 "Country":"Brasil"
       }
    },
-   "Order":{
-      "OrderDescription": "Whey Protein Isolado",
-      "OrderReference":"Meu pedido",
-      "AmountInCents":9999,
-      "Items": [
-          {
-              "SKU": "123",
-              "Name":"Whey Protein Isolado",
-              "Category":"Suplementos",
-              "PriceInCents":100,
-              "UnitPriceInCents":10,
-              "Quantity":10
-          }
-      ],
-    },
-    "Shipping": {
-        "CostInCents": 10,
-        "Address":{
-            "Street":"Rua da Quitanda",
-            "Number":199,
-            "ZipCode":"20091005",
-            "Complement":"Décimo andar",
-            "District":"Centro",
-            "City":"Rio de Janeiro",
-            "StateName":"Rio de Janeiro",
-            "Country":"Brasil"
-        }
-    },
-    "Payment": {
-        "OperationType": "AuthorizeAndCapture",
-        "Currency": "BRL",
-        "Installments": [
-            { 
-                "Number": 1,
-                "Text": "1x de 100,00 sem juros",
-                "AmountInCents": 100
-            }
-        ]
-    },
-    "Options": {
-        "SuccessUrl": "https://obrigado.com",
-        "FailureUrl": "https://falhou.com",
-        "NotificationUrl": "htts://status.com"
-    }
+   "Order":{  
+      "OrderReference":"CODIGOPEDIDO",
+      "OrderDescription":"Magneto vs Sentinel",
+      "AmountInCents":1000,
+      "Items":[  
+         {  
+            "Name":"Magneto vs Sentinel",
+            "Description":"Estátua do personagem Magneto dos quadrinhos Marvel",
+            "Category":"Colecionáveis",
+            "PriceInCents":1000,
+            "UnitPriceInCents":1000,
+            "Quantity":1
+         }
+      ]
+   },
+   "Shipping":{  
+      "CostInCents":0,
+      "Address":{  
+         "Street":"Rua da Quitanda",
+         "Number":199,
+         "ZipCode":"20091005",
+         "Complement":"Décimo andar",
+         "District":"Centro",
+         "City":"Rio de Janeiro",
+         "StateName":"Rio de Janeiro",
+		 "Country":"Brasil"
+      }
+   },
+   "Payment":{  
+      "OperationType":"Authorize",
+      "Currency":"BRL",
+      "SoftDescriptor":"BPay",
+      "Installments":[
+          { "Number":1, "Text": "1x de R$10,00 sem juros" },
+          { "Number":2, "Text": "2x de R$5,00 sem juros" },
+          { "Number":3, "Text": "3x de R$4,00 com juros", "AmountInCents":1200 }
+      ]
+   },
+   "Options": {
+       "SuccessUrl":"https://obrigado.com",
+       "NotificationUrl":"https://status.com"
+   }
 }
 ```
 
@@ -228,27 +225,24 @@ ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/mast
 }
 ```
 
-#### Erro na criação do token - http 400 ou 500
+#### Erro na criação do token - http 400
 
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
-| errorcode | Integer | Código que identifica tipo de erro. Valores possíveis, 400 - indica que algum campo foi enviado com valor inválido ou 500 - erro interno na criação do token | Sim |
 | msg | String | Descrição do erro | Sim |
-| param | String | Identifica campo com o dado inválido | Sim, caso seja um erro 400 |
-| value | String | Valor inválido informado no campo em questão | Sim, caso seja um erro 400 |
+| param | String | Identifica campo com o dado inválido | Sim |
+| value | String | Valor inválido informado no campo em questão | Sim |
 
 #### Json de exemplo com resposta de erro na criação do token
 
 ``` json
 [
   {
-    "errorcode": "400",
     "param": "Buyer.Email",
     "msg": "Invalid value",
-    "value": "cpecanhamundipagg.com"
+    "value": "ciclanocomprador.com"
   },
   {
-    "errorcode": "400",
     "param": "Buyer.Birthday",
     "msg": "Invalid value",
     "value": "1988-08-"
@@ -266,7 +260,7 @@ Após o processamento de uma transação pelo BPay, um POST de notificação con
 
 **É importante que a página que irá receber e interpretar o POST de notificação esteja preparada para receber novos campos além daqueles descritos no manual, para que possamos atualizar e acrescentar campos conforme necessário, de forma a sempre notificar a loja com as informações mais completas sobre suas transações.**
 
-O BPay efetuará três tentativas de notificação com intervalos de aproximadamente 15 minutos entre cada tentativa. Caso ocorra insucesso, o recurso de consulta, Query, está disponível na API para que a loja possa consultar os dados do pedido a qualquer momento. Para que o serviço de notificação do BPay entenda que houve sucesso na notificação, a URL da loja deve responder somente com o texto "OK" no corpo da mensagem de resposta.
+O BPay efetuará três tentativas de notificação com intervalos de aproximadamente 15 minutos entre cada tentativa. Caso ocorra insucesso, o recurso de consulta, Query, está disponível na API para que a loja possa consultar os dados do pedido a qualquer momento. Para que o serviço de notificação do BPay entenda que houve sucesso na notificação, a URL da loja deve responder   o o HttpStatusCode 200 (OK) no Header da mensagem de resposta.
 
 Detalhes dos campos enviados no Post de Notificação:
 
@@ -297,8 +291,8 @@ Detalhes dos campos enviados no Post de Notificação:
 | InstallmentCount | Integer | Número de parcelas da transação | Sim |
 | PreviousTransactionStatus | String | Status prévio da transação no BPay | Sim |
 | CurrentTransactionStatus | String | Status atual da transação no BPay | Sim |
-| CreateDate | String | Data de criação da transação. Formato yyyy-mm-ddThh:mm:ss | Sim |
-| LastChangeDate | String | Data da última alteração da de status da transação. Formato yyyy-mm-ddThh:mm:ss | Sim |
+| CreateDate | String | Data de criação da transação. Formato yyyy-mm-dd hh:mm:ss | Sim |
+| LastChangeDate | String | Data da última alteração da de status da transação. Formato yyyy-mm-dd hh:mm:ss | Sim |
 | CreditCard | [CreditCard](https://github.com/b-pay/pre-order/blob/master/README.md#creditcard) | Objeto com dados do cartão de crédito utilizado para realizar a transação | Sim |
 | History | Array de [History](https://github.com/b-pay/pre-order/blob/master/README.md#history-1) | Histórico de eventos realizadas em uma transação | Sim | 
 
@@ -314,7 +308,7 @@ Detalhes dos campos enviados no Post de Notificação:
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
 | TransactionStatus | String | Status da transação. Exemplo "Captured" | Sim |
-| Date | String | Data em que o evento foi realizado. Formato yyyy-mm-ddThh:mm:ss | Sim |
+| Date | String | Data em que o evento foi realizado. Formato yyyy-mm-dd hh:mm:ss | Sim |
 | AmountInCents | Integer | Valor de acordo com o evento realizado. Autorizado, capturado ou canelado | Sim |
 | OperationType | String | Tipo da transação realizada. Valores possíveis: 'AuthorizeAndCapture', 'Authorize' | Sim |
 | OrderStatus | String | Status do pedido | Sim |
