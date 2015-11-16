@@ -373,23 +373,9 @@ Detalhes dos campos enviados no Post de Notificação:
 
 ## Operação de consulta
 
-Para consultar transações do bPay é necessário enviar um GET para o recurso /transactions. Os parâmetros de pesquisa disponíveis são *TransactionKey*, identificador da transação no bPay, *OrderReference*, identificador do pedido na loja.
+Para consultar transações do bPay é necessário enviar um GET para o recurso /transactions. Os parâmetros de pesquisa disponíveis são *TransactionKey*, identificador da transação no bPay, *OrderReference*, identificador do pedido na loja ou *Token*, código gerado para exibição do checkout.
 
-Exemplo: http://bpay-node.cloudapp.net/transactions?TransactionKey=6fdd42b2-6c78-43e2-8a9a-22a507c593b8
-
-## Referência de campos da resposta de uma operação de consulta
-
-| Campo|Tipo|Descrição|Obrigatório |
-| --------|---------|-------|-------|
-| TransactionCount | Integer | Número de transações encontradas | Sim |
-| TransactionDataCollection | Array de [TransactionDataCollection](https://github.com/b-pay/pre-order/blob/master/README.md#transactiondatacollection) | Objeto com dados das transações | Sim |
-
-#### TransactionDataCollection
-
-| Campo|Tipo|Descrição|Obrigatório |
-| --------|---------|-------|-------|
-| Payment | [Payment](https://github.com/b-pay/pre-order/blob/master/README.md#payment-1) | Objeto que contém dados do pagamento | Sim |
-| Order | [Order](https://github.com/b-pay/pre-order/blob/master/README.md#order-1) | Objeto que contém dados do pagamento | Sim |
+Exemplo: http://bpay-checkout.azurewebsites.net/transactions?id={TransactionKey, OrderReference ou Token}
 
 #### Observação
 `
@@ -399,51 +385,46 @@ Os objetos *Payment* e *Order* possuem os mesmos campos descritos na seção do 
 ## Json de exemplo com resposta de uma operação de consulta
 
 ```json
-{
-    "TransactionCount": 123,
-    "TransactionDataCollection": [
-        {
-            "Payment": {
-                "TransactionType": "CreditCardTransaction",
-                "CreditCardTransaction": {
-                    "SellerKey": "1a7848d4-2b7c-42af-9d04-98b792fb89ca",
-                    "Acquirer": "Simulator",
-                    "TransactionKey": "6fdd42b2-6c78-43e2-8a9a-22a507c593b8",
-                    "TransactionReference": "853fa133-2715-4d25-828d-3c497f5ae5a7",
-                    "TransactionIdentifier": "96311",
-                    "UniqueSequencialNumber": "121073",
-                    "AuthorizationCode": "100038",
-                    "AmountInCents": 32918,
-                    "InstallmentCount": 0,
-                    "PreviousTransactionStatus": null,
-                    "CurrentTransactionStatus": "Captured",
-                    "CreateDate": "2015-11-06T21:21:46",
-                    "LastChangeDate": "2015-11-06T21:21:46",
-                    "CreditCard": {
-                        "MaskedCreditCardNumber": "411111****1111",
-                        "HolderName": "carlosapdepaul",
-                        "CreditCardBrand": "Visa"
-                    },
-                    "History": [
-                        {
-                            "TransactionStatus": "Captured",
-                            "Date": "2015-11-06T21:21:46",
-                            "AmountInCents": 32918,
-                            "OperationType": "AuthorizeAndCapture",
-                            "OrderStatus": "Paid",
-                            "AcquirerReturnCode": "0",
-                            "AcquirerMessage": "Simulator|Transaçãodesimulaçãoautorizadacomsucesso"
-                        }
-                    ]
-                }
+[{
+    "Payment": {
+        "TransactionType": "CreditCardTransaction",
+        "CreditCardTransaction": {
+            "SellerKey": "1a7848d4-2b7c-42af-9d04-98b792fb89ca",
+            "Acquirer": "Simulator",
+            "TransactionKey": "6fdd42b2-6c78-43e2-8a9a-22a507c593b8",
+            "TransactionReference": "853fa133-2715-4d25-828d-3c497f5ae5a7",
+            "TransactionIdentifier": "96311",
+            "UniqueSequencialNumber": "121073",
+            "AuthorizationCode": "100038",
+            "AmountInCents": 32918,
+            "InstallmentCount": 0,
+            "PreviousTransactionStatus": null,
+            "CurrentTransactionStatus": "Captured",
+            "CreateDate": "2015-11-06T21:21:46",
+            "LastChangeDate": "2015-11-06T21:21:46",
+            "CreditCard": {
+                "MaskedCreditCardNumber": "411111****1111",
+                "HolderName": "carlosapdepaul",
+                "CreditCardBrand": "Visa"
             },
-            "Order": {
-                "Token": "767ac3e0-84cc-11e5-b9d9-7bfe49f91a01",
-                "OrderKey": "674bc75b-84a4-4026-9f2a-ada73920a1a1",
-                "OrderReference": "Meupedido2",
-                "OrderStatus": "Paid"
-            }
+            "History": [
+                {
+                    "TransactionStatus": "Captured",
+                    "Date": "2015-11-06T21:21:46",
+                    "AmountInCents": 32918,
+                    "OperationType": "AuthorizeAndCapture",
+                    "OrderStatus": "Paid",
+                    "AcquirerReturnCode": "0",
+                    "AcquirerMessage": "Simulator|Transaçãodesimulaçãoautorizadacomsucesso"
+                }
+            ]
         }
-    ]
-}
+    },
+    "Order": {
+        "Token": "767ac3e0-84cc-11e5-b9d9-7bfe49f91a01",
+        "OrderKey": "674bc75b-84a4-4026-9f2a-ada73920a1a1",
+        "OrderReference": "Meupedido2",
+        "OrderStatus": "Paid"
+    }
+}]
 ```
