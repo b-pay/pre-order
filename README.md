@@ -342,8 +342,8 @@ Detalhes dos campos enviados no Post de Notificação:
             "InstallmentCount": 0,
             "PreviousTransactionStatus": null,
             "CurrentTransactionStatus": "Captured",
-            "CreateDate": "2015-11-06T21:21:46",
-            "LastChangeDate": "2015-11-06T21:21:46",
+            "CreateDate": "2015-11-06 21:21:46",
+            "LastChangeDate": "2015-11-06 21:21:46",
             "CreditCard": {
                 "MaskedCreditCardNumber": "411111****1111",
                 "HolderName": "carlosapdepaul",
@@ -352,7 +352,7 @@ Detalhes dos campos enviados no Post de Notificação:
             "History": [
                 {
                     "TransactionStatus": "Captured",
-                    "Date": "2015-11-06T21:21:46",
+                    "Date": "2015-11-06 21:21:46",
                     "AmountInCents": 32918,
                     "OperationType": "AuthorizeAndCapture",
                     "OrderStatus": "Paid",
@@ -400,8 +400,8 @@ Os objetos *Payment* e *Order* possuem os mesmos campos descritos na seção do 
             "InstallmentCount": 0,
             "PreviousTransactionStatus": null,
             "CurrentTransactionStatus": "Captured",
-            "CreateDate": "2015-11-06T21:21:46",
-            "LastChangeDate": "2015-11-06T21:21:46",
+            "CreateDate": "2015-11-06 21:21:46",
+            "LastChangeDate": "2015-11-06 21:21:46",
             "CreditCard": {
                 "MaskedCreditCardNumber": "411111****1111",
                 "HolderName": "carlosapdepaul",
@@ -410,7 +410,7 @@ Os objetos *Payment* e *Order* possuem os mesmos campos descritos na seção do 
             "History": [
                 {
                     "TransactionStatus": "Captured",
-                    "Date": "2015-11-06T21:21:46",
+                    "Date": "2015-11-06 21:21:46",
                     "AmountInCents": 32918,
                     "OperationType": "AuthorizeAndCapture",
                     "OrderStatus": "Paid",
