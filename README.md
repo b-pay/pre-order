@@ -135,7 +135,7 @@ ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/mast
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
 | SuccessUrl | String | Url de sucesso. Está página será exibida caso o pagamento seja processado com sucesso. | Sim |
-| NotificationUrl | String | Url de notificação de status. O status atual da transação será enviado para esta url | Sim |
+| StatusNotificationUrl | String | Url de notificação de status. O status atual da transação será enviado para esta url | Sim |
 
 ## Json de exemplo para criação de token
 
@@ -202,7 +202,7 @@ ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/mast
    },
    "Options": {
        "SuccessUrl":"https://obrigado.com",
-       "NotificationUrl":"https://status.com"
+       "StatusNotificationUrl":"https://status.com"
    }
 }
 ```
@@ -256,7 +256,7 @@ http://bpay-checkout.azurewebsites.net/get-checkout?id={TOKEN}
 
 ## Post de notificação
 
-Após o processamento de uma transação pelo BPay, um POST de notificação contendo os dados da transação será enviado no formato JSON para a loja. Para isto, é necessário que a loja informe, no momento de criação do token, uma URL que irá receber e interpretar estes dados, campo *Option.NotificationUrl*.
+Após o processamento de uma transação pelo BPay, um POST de notificação contendo os dados da transação será enviado no formato JSON para a loja. Para isto, é necessário que a loja informe, no momento de criação do token, uma URL que irá receber e interpretar estes dados, campo *Option.StatusNotificationUrl*.
 
 **É importante que a página que irá receber e interpretar o POST de notificação esteja preparada para receber novos campos além daqueles descritos no manual, para que possamos atualizar e acrescentar campos conforme necessário, de forma a sempre notificar a loja com as informações mais completas sobre suas transações.**
 
