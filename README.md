@@ -56,10 +56,10 @@ Para criar um token é necessário enviar um POST para o recurso /pre-order.
 
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
-| DocumentNumber | String | Número do documento do comprador| Sim |
+| DocumentNumber | String | Número do documento do comprador. Máximo 64 caracteres | Sim |
 | PersonType | String | Tipo de pessoa. Valores possíveis - 'Person' ou 'Company' | Sim |
-| Name | String | Nome do comprador com no máximo 64 caracteres | Sim |
-| Email | String | Endereço de e-mail do comprador com no máximo 64 caracteres | Sim |
+| Name | String | Nome do comprador. Máximo 64 caracteres | Sim |
+| Email | String | Endereço de e-mail do comprador. Máximo 64 caracteres | Sim |
 | Gender | String | Sexo do comprador. Valores possíveis - 'Male' ou 'Female' | Sim |
 | Birthday | String | Data de aniversário do comprador. Formato aceito yyyy-mm-dd | Não |
 | HomePhone | String | Telefone residencial do comprador. Ex: 552123011822 | Sim |
@@ -75,7 +75,7 @@ Para criar um token é necessário enviar um POST para o recurso /pre-order.
 | Number | String | Número | Sim |
 | ZipCode | String | CEP (sem traço) | Sim |
 | Complement | String | Complemento. Máximo de 64 caracteres | Não |
-| District | String | Bairro. Máximo 64 caracteres | Sim |
+| District | String | Bairro. Máximo de 64 caracteres | Sim |
 | City | String | Cidade. Máximo de 64 caracteres | Sim |
 | StateName | String | Estado. Máximo de 32 caracteres | Sim |
 | Country | String | País. Máximo de 32 caracteres | Sim |
