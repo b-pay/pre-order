@@ -134,75 +134,77 @@ ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/mast
 #### Options
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
-| SuccessUrl | String | Url de sucesso. Está página será exibida caso o pagamento seja processado com sucesso. | Sim |
-| StatusNotificationUrl | String | Url de notificação de status. O status atual da transação será enviado para esta url | Sim |
+| ReturnUrl | String | Url de sucesso. Está página será exibida caso o pagamento seja processado com sucesso. | Sim |
+| TransactionStatusNotificationUrl | String | Url de notificação de status. O status atual da transação será enviado para esta url | Sim |
+| PaymentExpnNotificationUrl | String | Url de notificação de pagamento expirado. | Sim |
 
 ## Json de exemplo para criação de token
 
 ```json
 {  
-   "SellerKey":"1A7848D4-2B7C-42AF-9D04-98B792FB89CA",
-   "Buyer":{  
-      "DocumentNumber":"11111111111",
-      "PersonType":"Person",
-      "Name":"Ciclano",
-      "Email":"ciclano@comprador.com",
-      "Gender":"Male",
-      "Birthday":"1988-08-02",
-      "HomePhone":"2122222222",
-      "MobilePhone":"2199999999",
-      "BillingAddress":{  
-         "Street":"Rua da Quitanda",
-         "Number":199,
-         "ZipCode":"20091005",
-         "Complement":"Décimo andar",
-         "District":"Centro",
-         "City":"Rio de Janeiro",
-         "StateName":"Rio de Janeiro",
-		 "Country":"Brasil"
+   "sellerKey":"1A7848D4-2B7C-42AF-9D04-98B792FB89CA",
+   "buyer":{  
+      "documentNumber":"11111111111",
+      "personType":"Person",
+      "name":"Ciclano",
+      "email":"ciclano@comprador.com",
+      "gender":"Male",
+      "birthday":"1988-08-02",
+      "homePhone":"2122222222",
+      "mobilePhone":"2199999999",
+      "billingAddress":{  
+         "street":"Rua da Quitanda",
+         "number":199,
+         "zipCode":"20091005",
+         "complement":"Décimo andar",
+         "district":"Centro",
+         "city":"Rio de Janeiro",
+         "stateName":"Rio de Janeiro",
+	 "country":"Brasil"
       }
    },
-   "Order":{  
-      "OrderReference":"CODIGOPEDIDO",
-      "OrderDescription":"Magneto vs Sentinel",
-      "AmountInCents":1000,
-      "Items":[  
+   "order":{  
+      "orderReference":"CODIGOPEDIDO",
+      "orderDescription":"Magneto vs Sentinel",
+      "amountInCents":1000,
+      "items":[  
          {  
-            "Name":"Magneto vs Sentinel",
-            "Description":"Estátua do personagem Magneto dos quadrinhos Marvel",
-            "Category":"Colecionáveis",
-            "PriceInCents":1000,
-            "UnitPriceInCents":1000,
-            "Quantity":1
+            "name":"Magneto vs Sentinel",
+            "description":"Estátua do personagem Magneto dos quadrinhos Marvel",
+            "category":"Colecionáveis",
+            "priceInCents":1000,
+            "unitPriceInCents":1000,
+            "quantity":1
          }
       ]
    },
-   "Shipping":{  
-      "CostInCents":0,
-      "Address":{  
-         "Street":"Rua da Quitanda",
-         "Number":199,
-         "ZipCode":"20091005",
-         "Complement":"Décimo andar",
-         "District":"Centro",
-         "City":"Rio de Janeiro",
-         "StateName":"Rio de Janeiro",
-		 "Country":"Brasil"
+   "shipping":{  
+      "costInCents":0,
+      "address":{  
+         "street":"Rua da Quitanda",
+         "number":199,
+         "zipCode":"20091005",
+         "complement":"Décimo andar",
+         "district":"Centro",
+         "city":"Rio de Janeiro",
+         "stateName":"Rio de Janeiro",
+	 "country":"Brasil"
       }
    },
-   "Payment":{  
-      "OperationType":"Authorize",
-      "Currency":"BRL",
-      "SoftDescriptor":"BPay",
-      "Installments":[
-          { "Number":1, "Text": "1x de R$10,00 sem juros" },
-          { "Number":2, "Text": "2x de R$5,00 sem juros" },
-          { "Number":3, "Text": "3x de R$4,00 com juros", "AmountInCents":1200 }
+   "payment":{  
+      "operationType":"Authorize",
+      "currency":"BRL",
+      "softDescriptor":"BPay",
+      "installments":[
+          { "number":1, "text": "1x de R$10,00 sem juros" },
+          { "number":2, "text": "2x de R$5,00 sem juros" },
+          { "number":3, "text": "3x de R$4,00 com juros", "amountInCents":1200 }
       ]
    },
-   "Options": {
-       "SuccessUrl":"https://obrigado.com",
-       "StatusNotificationUrl":"https://status.com"
+   "options": {
+       "returnUrl":"https://obrigado.com",
+       "transactionStatusNotificationUrl":"https://status.com",
+       "paymentExpnNotificationUrl": "https://expirado.com"
    }
 }
 ```
@@ -220,8 +222,8 @@ ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/mast
 
 ```json
 {
-   "Token":"71861931-9F71-4577-82D8-4F68AC2AEA17",
-   "ExpiresIn":1446495735
+   "token":"71861931-9F71-4577-82D8-4F68AC2AEA17",
+   "expiresIn":1446495735
 }
 ```
 
@@ -328,45 +330,45 @@ Detalhes dos campos enviados no Post de Notificação:
 
 ```json
 {
-    "Payment": {
-        "TransactionType": "CreditCardTransaction",
-        "CreditCardTransaction": {
-            "SellerKey": "1a7848d4-2b7c-42af-9d04-98b792fb89ca",
-            "Acquirer": "Simulator",
-            "TransactionKey": "6fdd42b2-6c78-43e2-8a9a-22a507c593b8",
-            "TransactionReference": "853fa133-2715-4d25-828d-3c497f5ae5a7",
-            "TransactionIdentifier": "96311",
-            "UniqueSequencialNumber": "121073",
-            "AuthorizationCode": "100038",
-            "AmountInCents": 32918,
-            "InstallmentCount": 0,
-            "PreviousTransactionStatus": null,
-            "CurrentTransactionStatus": "Captured",
-            "CreateDate": "2015-11-06 21:21:46",
-            "LastChangeDate": "2015-11-06 21:21:46",
-            "CreditCard": {
-                "MaskedCreditCardNumber": "411111****1111",
-                "HolderName": "carlosapdepaul",
-                "CreditCardBrand": "Visa"
+    "payment": {
+        "transactionType": "CreditCardTransaction",
+        "transaction": {
+            "sellerKey": "1a7848d4-2b7c-42af-9d04-98b792fb89ca",
+            "acquirer": "Simulator",
+            "transactionKey": "6fdd42b2-6c78-43e2-8a9a-22a507c593b8",
+            "transactionReference": "853fa133-2715-4d25-828d-3c497f5ae5a7",
+            "transactionIdentifier": "96311",
+            "uniqueSequencialNumber": "121073",
+            "authorizationCode": "100038",
+            "amountInCents": 32918,
+            "installmentCount": 0,
+            "previousTransactionStatus": null,
+            "currentTransactionStatus": "Captured",
+            "createDate": "2015-11-06 21:21:46",
+            "lastChangeDate": "2015-11-06 21:21:46",
+            "creditCard": {
+                "maskedCreditCardNumber": "411111****1111",
+                "holderName": "carlosapdepaul",
+                "creditCardBrand": "Visa"
             },
-            "History": [
+            "history": [
                 {
-                    "TransactionStatus": "Captured",
-                    "Date": "2015-11-06 21:21:46",
-                    "AmountInCents": 32918,
-                    "OperationType": "AuthorizeAndCapture",
-                    "OrderStatus": "Paid",
-                    "AcquirerReturnCode": "0",
-                    "AcquirerMessage": "Simulator|Transaçãodesimulaçãoautorizadacomsucesso"
+                    "transactionStatus": "Captured",
+                    "date": "2015-11-06 21:21:46",
+                    "amountInCents": 32918,
+                    "operationType": "AuthorizeAndCapture",
+                    "orderStatus": "Paid",
+                    "acquirerReturnCode": "0",
+                    "acquirerMessage": "Simulator|Transaçãodesimulaçãoautorizadacomsucesso"
                 }
             ]
         }
     },
-    "Order": {
-        "Token": "767ac3e0-84cc-11e5-b9d9-7bfe49f91a01",
-        "OrderKey": "674bc75b-84a4-4026-9f2a-ada73920a1a1",
-        "OrderReference": "Meupedido2",
-        "OrderStatus": "Paid"
+    "order": {
+        "token": "767ac3e0-84cc-11e5-b9d9-7bfe49f91a01",
+        "orderKey": "674bc75b-84a4-4026-9f2a-ada73920a1a1",
+        "orderReference": "Meupedido2",
+        "orderStatus": "Paid"
     }
 }
 ```
@@ -386,45 +388,45 @@ Os objetos *Payment* e *Order* possuem os mesmos campos descritos na seção do 
 
 ```json
 [{
-    "Payment": {
-        "TransactionType": "CreditCardTransaction",
-        "CreditCardTransaction": {
-            "SellerKey": "1a7848d4-2b7c-42af-9d04-98b792fb89ca",
-            "Acquirer": "Simulator",
-            "TransactionKey": "6fdd42b2-6c78-43e2-8a9a-22a507c593b8",
-            "TransactionReference": "853fa133-2715-4d25-828d-3c497f5ae5a7",
-            "TransactionIdentifier": "96311",
-            "UniqueSequencialNumber": "121073",
-            "AuthorizationCode": "100038",
-            "AmountInCents": 32918,
-            "InstallmentCount": 0,
-            "PreviousTransactionStatus": null,
-            "CurrentTransactionStatus": "Captured",
-            "CreateDate": "2015-11-06 21:21:46",
-            "LastChangeDate": "2015-11-06 21:21:46",
-            "CreditCard": {
-                "MaskedCreditCardNumber": "411111****1111",
-                "HolderName": "carlosapdepaul",
-                "CreditCardBrand": "Visa"
+    "payment": {
+        "transactionType": "CreditCardTransaction",
+        "transaction": {
+            "sellerKey": "1a7848d4-2b7c-42af-9d04-98b792fb89ca",
+            "acquirer": "Simulator",
+            "transactionKey": "6fdd42b2-6c78-43e2-8a9a-22a507c593b8",
+            "transactionReference": "853fa133-2715-4d25-828d-3c497f5ae5a7",
+            "transactionIdentifier": "96311",
+            "uniqueSequencialNumber": "121073",
+            "authorizationCode": "100038",
+            "amountInCents": 32918,
+            "installmentCount": 0,
+            "previousTransactionStatus": null,
+            "currentTransactionStatus": "Captured",
+            "createDate": "2015-11-06 21:21:46",
+            "lastChangeDate": "2015-11-06 21:21:46",
+            "creditCard": {
+                "maskedCreditCardNumber": "411111****1111",
+                "holderName": "carlosapdepaul",
+                "creditCardBrand": "Visa"
             },
-            "History": [
+            "history": [
                 {
-                    "TransactionStatus": "Captured",
-                    "Date": "2015-11-06 21:21:46",
-                    "AmountInCents": 32918,
-                    "OperationType": "AuthorizeAndCapture",
-                    "OrderStatus": "Paid",
-                    "AcquirerReturnCode": "0",
-                    "AcquirerMessage": "Simulator|Transaçãodesimulaçãoautorizadacomsucesso"
+                    "transactionStatus": "Captured",
+                    "date": "2015-11-06 21:21:46",
+                    "amountInCents": 32918,
+                    "operationType": "AuthorizeAndCapture",
+                    "orderStatus": "Paid",
+                    "acquirerReturnCode": "0",
+                    "acquirerMessage": "Simulator|Transaçãodesimulaçãoautorizadacomsucesso"
                 }
             ]
         }
     },
-    "Order": {
-        "Token": "767ac3e0-84cc-11e5-b9d9-7bfe49f91a01",
-        "OrderKey": "674bc75b-84a4-4026-9f2a-ada73920a1a1",
-        "OrderReference": "Meupedido2",
-        "OrderStatus": "Paid"
+    "order": {
+        "token": "767ac3e0-84cc-11e5-b9d9-7bfe49f91a01",
+        "orderKey": "674bc75b-84a4-4026-9f2a-ada73920a1a1",
+        "orderReference": "Meupedido2",
+        "orderStatus": "Paid"
     }
 }]
 ```
