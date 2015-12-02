@@ -4,9 +4,9 @@ Antes de uma transação ser realizada através do BPay é necessário a criaç�
 
 Pontos importantes que devem ser observados:
 * A solicitação do token deve ser realizada pela página de checkout da loja, página onde o cliente conclui todo o processo de carrinho de compra;
-* A identificação do pedido na loja deve ser único e enviado na solicitação de criação do token, campo OrderReference;
+* A identificação do pedido na loja deve ser único e enviado na solicitação de criação do token, campo orderReference;
 * Um token tem tempo de expiração padrão de 30 minutos.
-* O token é criado através de um POST para o recurso 'pre-order';
+* O token é criado através de um POST para o recurso 'tokens';
 * A API do BPay está disponível no seguinte endereço:
    * Produção: 
    * Homologação: http://bpay-node.cloudapp.net
@@ -41,7 +41,7 @@ Por exemplo, "Authorization: Basic ZnJlZDpmcmVk"
 
 ## Referência de campos para criação de um token
 
-Para criar um token é necessário enviar um POST para o recurso /pre-order.
+Para criar um token é necessário enviar um POST para o recurso /tokens.
 
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
@@ -135,8 +135,8 @@ ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/mast
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
 | ReturnUrl | String | Url de sucesso. Está página será exibida caso o pagamento seja processado com sucesso. | Sim |
-| TransactionStatusNotificationUrl | String | Url de notificação de status. O status atual da transação será enviado para esta url | Sim |
-| PaymentExpnNotificationUrl | String | Url de notificação de pagamento expirado. | Sim |
+| TransactionStatusNotificationUrl | String | Url de notificação de status. O status atual da transação será enviado para esta url | Não |
+| PaymentExpnNotificationUrl | String | Url de notificação de pagamento expirado. | Não |
 
 ## Json de exemplo para criação de token
 
@@ -160,7 +160,7 @@ ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/mast
          "district":"Centro",
          "city":"Rio de Janeiro",
          "stateName":"Rio de Janeiro",
-	 "country":"Brasil"
+         "country":"Brasil"
       }
    },
    "order":{  
@@ -188,7 +188,7 @@ ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/mast
          "district":"Centro",
          "city":"Rio de Janeiro",
          "stateName":"Rio de Janeiro",
-	 "country":"Brasil"
+         "country":"Brasil"
       }
    },
    "payment":{  
@@ -258,7 +258,7 @@ http://bpay-checkout.azurewebsites.net/get-checkout?id={TOKEN}
 
 ## Post de notificação
 
-Após o processamento de uma transação pelo BPay, um POST de notificação contendo os dados da transação será enviado no formato JSON para a loja. Para isto, é necessário que a loja informe, no momento de criação do token, uma URL que irá receber e interpretar estes dados, campo *Option.StatusNotificationUrl*.
+Após o processamento de uma transação pelo BPay, um POST de notificação contendo os dados da transação será enviado no formato JSON para a loja. Para isto, é necessário que a loja informe, no momento de criação do token, uma URL que irá receber e interpretar estes dados, campo *options.transactionStatusNotificationUrl*.
 
 **É importante que a página que irá receber e interpretar o POST de notificação esteja preparada para receber novos campos além daqueles descritos no manual, para que possamos atualizar e acrescentar campos conforme necessário, de forma a sempre notificar a loja com as informações mais completas sobre suas transações.**
 
@@ -375,13 +375,13 @@ Detalhes dos campos enviados no Post de Notificação:
 
 ## Operação de consulta
 
-Para consultar transações do bPay é necessário enviar um GET para o recurso /transactions. Os parâmetros de pesquisa disponíveis são *TransactionKey*, identificador da transação no bPay, *OrderReference*, identificador do pedido na loja ou *Token*, código gerado para exibição do checkout.
+Para consultar transações do bPay é necessário enviar um GET para o recurso /transactions. Os parâmetros de pesquisa disponíveis são *transactionKey*, identificador da transação no bPay, *orderReference*, identificador do pedido na loja ou *token*, código gerado para exibição do checkout.
 
-Exemplo: http://bpay-checkout.azurewebsites.net/transactions?id={TransactionKey, OrderReference ou Token}
+Exemplo: http://bpay-checkout.azurewebsites.net/transactions?id={transactionKey, orderReference ou token}
 
 #### Observação
 `
-Os objetos *Payment* e *Order* possuem os mesmos campos descritos na seção do Post de Notificação. Sendo assim, para simplificar a documentação, o link dos objetos citados acima faz referência aos mesmos objetos do Post de Notificação.
+Os objetos *payment* e *order* possuem os mesmos campos descritos na seção do Post de Notificação. Sendo assim, para simplificar a documentação, o link dos objetos citados acima faz referência aos mesmos objetos do Post de Notificação.
 `
 
 ## Json de exemplo com resposta de uma operação de consulta
