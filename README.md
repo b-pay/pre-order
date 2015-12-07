@@ -91,7 +91,6 @@ Para criar um token é necessário enviar um POST para o recurso /tokens.
 #### Item
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
-| SKU | String | Identificador do produto | Não |
 | Name | String | Nome do produto | Sim |
 | Category | String | Categoria do produto | Não |
 | PriceInCents | Integer | Valor total do item no carrinho | Sim |
