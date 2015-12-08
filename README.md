@@ -60,10 +60,10 @@ Para criar um token é necessário enviar um POST para o recurso /tokens.
 | PersonType | String | Tipo de pessoa. Valores possíveis - 'Person' ou 'Company' | Sim |
 | Name | String | Nome do comprador. Máximo 64 caracteres | Sim |
 | Email | String | Endereço de e-mail do comprador. Máximo 64 caracteres | Sim |
-| Gender | String | Sexo do comprador. Valores possíveis - 'Male' ou 'Female' | Sim |
+| Gender | String | Sexo do comprador. Valores possíveis - 'Male' ou 'Female' | Não |
 | Birthday | String | Data de aniversário do comprador. Formato aceito yyyy-mm-dd | Não |
-| HomePhone | String | Telefone residencial do comprador. Ex: 552123011822 | Sim |
-| MobilePhone | String | Telefone celular do comprador. Ex: 552197533011 | Sim |
+| HomePhone | String | Telefone residencial do comprador. Ex: 552123011822 | Não |
+| MobilePhone | String | Telefone celular do comprador. Ex: 552197533011 | Não |
 | WorkPhone | String | Telefone comercial do comprador. Ex: 552123011822 | Não |
 | BillingAddress | [BillingAddress](https://github.com/b-pay/pre-order/blob/master/README.md#billingaddress) | Objeto com os dados do endereço de cobrança |Sim|
 
@@ -83,7 +83,6 @@ Para criar um token é necessário enviar um POST para o recurso /tokens.
 #### Order
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
-| OrderDescription | String | Descrição do pedido. Máximo de 256 caracteres | Não |
 | OrderReference | String | Identificador do pedido na loja. Máximo de 56 caracteres | Não |
 | AmountInCents | Integer | Valor do pedido | Sim |
 | Items | Array de [Item](https://github.com/b-pay/pre-order/blob/master/README.md#item) | Coleção com itens do carrinho de compras | Sim |
@@ -95,6 +94,7 @@ Para criar um token é necessário enviar um POST para o recurso /tokens.
 | Category | String | Categoria do produto | Não |
 | PriceInCents | Integer | Valor total do item no carrinho | Sim |
 | UnitPriceInCents | Integer | Valor unitário do item no carrinho | Sim |
+| DiscountAmountInCents | Integer | Valor de desconto do item no carrinho | Não |
 | Quantity | Integer | Quantidade do item | Sim |
 
 #### Shipping
@@ -149,8 +149,6 @@ ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/mast
       "email":"ciclano@comprador.com",
       "gender":"Male",
       "birthday":"1988-08-02",
-      "homePhone":"2122222222",
-      "mobilePhone":"2199999999",
       "billingAddress":{  
          "street":"Rua da Quitanda",
          "number":199,
@@ -164,7 +162,6 @@ ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/mast
    },
    "order":{  
       "orderReference":"CODIGOPEDIDO",
-      "orderDescription":"Magneto vs Sentinel",
       "amountInCents":1000,
       "items":[  
          {  
