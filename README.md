@@ -166,10 +166,10 @@ ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/mast
       "items":[  
          {  
             "name":"Magneto vs Sentinel",
-            "description":"Estátua do personagem Magneto dos quadrinhos Marvel",
             "category":"Colecionáveis",
             "priceInCents":1000,
             "unitPriceInCents":1000,
+            "discountAmountInCents": 0,
             "quantity":1
          }
       ]
