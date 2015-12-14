@@ -101,7 +101,7 @@ Para criar um token é necessário enviar um POST para o recurso /tokens.
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
 | CostInCents | Integer | Valor do frete | Não |
-ShippingAddress | [ShippingAddress](https://github.com/b-pay/pre-order/blob/master/README.md#shippingaddress) | Objeto com dados do endereço de entrega | Sim |
+Address | [ShippingAddress](https://github.com/b-pay/pre-order/blob/master/README.md#shippingaddress) | Objeto com dados do endereço de entrega | Sim |
 
 #### ShippingAddress
 | Campo|Tipo|Descrição|Obrigatório |
