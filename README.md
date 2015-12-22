@@ -1,13 +1,13 @@
-## Documentação integração com BPay
+## Documentação integração com B-PAY
 
-Antes de uma transação ser realizada através do BPay é necessário a criação de um token pelo ambiente server side da loja. 
+Antes de uma transação ser realizada através do B-PAY é necessário a criação de um token pelo ambiente server side da loja. 
 
 Pontos importantes que devem ser observados:
 * A solicitação do token deve ser realizada pela página de checkout da loja, página onde o cliente conclui todo o processo de carrinho de compra;
 * A identificação do pedido na loja deve ser único e enviado na solicitação de criação do token, campo orderReference;
 * Um token tem tempo de expiração padrão de 30 minutos.
 * O token é criado através de um POST para o recurso 'tokens';
-* A API do BPay está disponível no seguinte endereço:
+* A API do B-PAY está disponível no seguinte endereço:
    * Produção: 
    * Homologação: http://azbsbpnd-01.cloudapp.net
 
@@ -18,7 +18,7 @@ Conteúdo da documentação:
 * [Json de exemplo para criação de token](https://github.com/b-pay/pre-order/blob/master/README.md#json-de-exemplo-para-criação-de-token)
 * [Referência de campos da resposta da criação de um token](https://github.com/b-pay/pre-order/blob/master/README.md#referência-de-campos-da-resposta-da-criação-de-um-token)
 * [Json de exemplo com resposta de criação de token](https://github.com/b-pay/pre-order/blob/master/README.md#json-de-exemplo-com-resposta-de-criação-de-token)
-* [Redirecionamento para página de checkout do bPay](https://github.com/b-pay/pre-order/blob/master/README.md#redirecionamento-para-página-de-checkout-do-bpay)
+* [Redirecionamento para página de checkout do B-PAY](https://github.com/b-pay/pre-order/blob/master/README.md#redirecionamento-para-página-de-checkout-do-B-PAY)
 * [Post de notificação](https://github.com/b-pay/pre-order/blob/master/README.md#post-de-notificação)
 * [Json de exemplo do Post de notificação](https://github.com/b-pay/pre-order/blob/master/README.md#json-de-exemplo-do-post-de-notificação)
 * [Operação de consulta](https://github.com/b-pay/pre-order/blob/master/README.md#operação-de-consulta)
@@ -190,7 +190,7 @@ Address | [ShippingAddress](https://github.com/b-pay/pre-order/blob/master/READM
    "payment":{  
       "operationType":"Authorize",
       "currency":"BRL",
-      "softDescriptor":"BPay",
+      "softDescriptor":"B-PAY",
       "installments":[
           { "number":1, "text": "1x de R$10,00 sem juros" },
           { "number":2, "text": "2x de R$5,00 sem juros" },
@@ -248,17 +248,17 @@ Address | [ShippingAddress](https://github.com/b-pay/pre-order/blob/master/READM
 ]
 ```
 
-## Redirecionamento para página de checkout do bPay
+## Redirecionamento para página de checkout do B-PAY
 
 http://azbsbpchk-01.cloudapp.net/get-checkout?id={TOKEN}
 
 ## Post de notificação
 
-Após o processamento de uma transação pelo BPay, um POST de notificação contendo os dados da transação será enviado no formato JSON para a loja. Para isto, é necessário que a loja informe, no momento de criação do token, uma URL que irá receber e interpretar estes dados, campo *options.transactionStatusNotificationUrl*.
+Após o processamento de uma transação pelo B-PAY, um POST de notificação contendo os dados da transação será enviado no formato JSON para a loja. Para isto, é necessário que a loja informe, no momento de criação do token, uma URL que irá receber e interpretar estes dados, campo *options.transactionStatusNotificationUrl*.
 
 **É importante que a página que irá receber e interpretar o POST de notificação esteja preparada para receber novos campos além daqueles descritos no manual, para que possamos atualizar e acrescentar campos conforme necessário, de forma a sempre notificar a loja com as informações mais completas sobre suas transações.**
 
-O BPay efetuará três tentativas de notificação com intervalos de aproximadamente 15 minutos entre cada tentativa. Caso ocorra insucesso, o recurso de consulta, Query, está disponível na API para que a loja possa consultar os dados do pedido a qualquer momento. Para que o serviço de notificação do BPay entenda que houve sucesso na notificação, a URL da loja deve responder   o o HttpStatusCode 200 (OK) no Header da mensagem de resposta.
+O B-PAY efetuará três tentativas de notificação com intervalos de aproximadamente 15 minutos entre cada tentativa. Caso ocorra insucesso, o recurso de consulta, Query, está disponível na API para que a loja possa consultar os dados do pedido a qualquer momento. Para que o serviço de notificação do B-PAY entenda que houve sucesso na notificação, a URL da loja deve responder   o o HttpStatusCode 200 (OK) no Header da mensagem de resposta.
 
 Detalhes dos campos enviados no Post de Notificação:
 
@@ -280,14 +280,14 @@ Detalhes dos campos enviados no Post de Notificação:
 | --------|---------|-------|-------|
 | SellerKey | UUID | Identificador da loja que realizou a transação | Sim |
 | Acquirer | String | Adquirente onde a transação foi processada | Sim |
-| TransactionKey | UUID | Identificador da transação no BPay | Sim |
+| TransactionKey | UUID | Identificador da transação no B-PAY | Sim |
 | TransactionIdentifier | String | Identificador da transação na adquirente | Sim |
 | UniqueSequencialNumber | String | Identificador único da transação na adquirente | Sim |
 | AuthorizationCode | String | Código de autorização na adquirente | Sim |
 | AmountInCents | Integer | Valor da transação em centavos | Sim |
 | InstallmentCount | Integer | Número de parcelas da transação | Sim |
-| PreviousTransactionStatus | String | Status prévio da transação no BPay | Sim |
-| CurrentTransactionStatus | String | Status atual da transação no BPay | Sim |
+| PreviousTransactionStatus | String | Status prévio da transação no B-PAY | Sim |
+| CurrentTransactionStatus | String | Status atual da transação no B-PAY | Sim |
 | CreateDate | String | Data de criação da transação. Formato yyyy-mm-dd hh:mm:ss | Sim |
 | LastChangeDate | String | Data da última alteração da de status da transação. Formato yyyy-mm-dd hh:mm:ss | Sim |
 | CreditCard | [CreditCard](https://github.com/b-pay/pre-order/blob/master/README.md#creditcard) | Objeto com dados do cartão de crédito utilizado para realizar a transação | Sim |
@@ -342,7 +342,7 @@ Detalhes dos campos enviados no Post de Notificação:
             "lastChangeDate": "2015-11-06 21:21:46",
             "creditCard": {
                 "maskedCreditCardNumber": "411111****1111",
-                "holderName": "carlosapdepaul",
+                "holderName": "carlos a p de paul",
                 "creditCardBrand": "Visa"
             },
             "history": [
@@ -353,7 +353,7 @@ Detalhes dos campos enviados no Post de Notificação:
                     "operationType": "AuthorizeAndCapture",
                     "orderStatus": "Paid",
                     "acquirerReturnCode": "0",
-                    "acquirerMessage": "Simulator|Transaçãodesimulaçãoautorizadacomsucesso"
+                    "acquirerMessage": "Simulator|Simulator|Transação de simulação autorizada com sucesso"
                 }
             ]
         }
@@ -369,7 +369,7 @@ Detalhes dos campos enviados no Post de Notificação:
 
 ## Operação de consulta
 
-Para consultar transações do bPay é necessário enviar um GET para o recurso /transactions. Os parâmetros de pesquisa disponíveis são *transactionKey*, identificador da transação no bPay, *orderReference*, identificador do pedido na loja ou *token*, código gerado para exibição do checkout.
+Para consultar transações do B-PAY é necessário enviar um GET para o recurso /transactions. Os parâmetros de pesquisa disponíveis são *transactionKey*, identificador da transação no B-PAY, *orderReference*, identificador do pedido na loja ou *token*, código gerado para exibição do checkout.
 
 Exemplo: http://azbsbpsell-01.cloudapp.net/transactions/{transactionKey, orderReference ou token}
 
@@ -399,7 +399,7 @@ Os objetos *payment* e *order* possuem os mesmos campos descritos na seção do 
             "lastChangeDate": "2015-11-06 21:21:46",
             "creditCard": {
                 "maskedCreditCardNumber": "411111****1111",
-                "holderName": "carlosapdepaul",
+                "holderName": "carlos a p de paul",
                 "creditCardBrand": "Visa"
             },
             "history": [
@@ -410,7 +410,80 @@ Os objetos *payment* e *order* possuem os mesmos campos descritos na seção do 
                     "operationType": "AuthorizeAndCapture",
                     "orderStatus": "Paid",
                     "acquirerReturnCode": "0",
-                    "acquirerMessage": "Simulator|Transaçãodesimulaçãoautorizadacomsucesso"
+                    "acquirerMessage": "Simulator|Simulator|Transação de simulação autorizada com sucesso"
+                }
+            ]
+        }
+    },
+    "order": {
+        "token": "767ac3e0-84cc-11e5-b9d9-7bfe49f91a01",
+        "orderKey": "674bc75b-84a4-4026-9f2a-ada73920a1a1",
+        "orderReference": "Meupedido2",
+        "orderStatus": "Paid"
+    }
+}]
+```
+
+## Operação de cancelamento
+
+Para cancelar transações do B-PAY é necessário enviar um POST para o recurso /transactions. Os parâmetros disponíveis são *transactionKey*, identificador da transação no B-PAY, *orderReference*, identificador do pedido na loja ou *token*, código gerado para exibição do checkout. O valor a ser cancelado é opcional e poderá ser enviado no corpo da requisição.
+
+Exemplo: http://azbsbpsell-01.cloudapp.net/transactions/{transactionKey, orderReference ou token}/cancel
+
+#### Cancel
+| Campo|Tipo|Descrição|Obrigatório |
+| --------|---------|-------|-------|
+| AmountInCents | Integer | Valor cancelado | Não |
+
+## Json de exemplo para criação de um cancelamento
+
+```json
+{
+  "amountInCents": 10000
+}
+```
+
+## Json de exemplo com resposta de uma operação de cancelamento
+
+```json
+[{
+    "payment": {
+        "transactionType": "CreditCardTransaction",
+        "transaction": {
+            "sellerKey": "1a7848d4-2b7c-42af-9d04-98b792fb89ca",
+            "acquirer": "Simulator",
+            "transactionKey": "6fdd42b2-6c78-43e2-8a9a-22a507c593b8",
+            "transactionIdentifier": "96311",
+            "uniqueSequencialNumber": "121073",
+            "authorizationCode": "100038",
+            "amountInCents": 32918,
+            "installmentCount": 0,
+            "previousTransactionStatus": "Captured",
+            "currentTransactionStatus": "Voided",
+            "createDate": "2015-11-06 21:21:46",
+            "lastChangeDate": "2015-11-06 21:21:46",
+            "creditCard": {
+                "maskedCreditCardNumber": "411111****1111",
+                "holderName": "carlos a p de paul",
+                "creditCardBrand": "Visa"
+            },
+            "history": [
+                {
+                    "transactionStatus": "Voided",
+                    "date": "2015-11-07 21:21:46",
+                    "amountInCents": 32918,
+                    "operationType": "Void",
+                    "orderStatus": "Voided",
+                    "acquirerReturnCode": "0",
+                    "acquirerMessage": "Simulator|Transação de simulação autorizada com sucesso"
+                }, {
+                    "transactionStatus": "Captured",
+                    "date": "2015-11-06 21:21:46",
+                    "amountInCents": 32918,
+                    "operationType": "AuthorizeAndCapture",
+                    "orderStatus": "Paid",
+                    "acquirerReturnCode": "0",
+                    "acquirerMessage": "Simulator|Transação de simulação autorizada com sucesso"
                 }
             ]
         }
