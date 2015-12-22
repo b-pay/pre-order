@@ -9,7 +9,7 @@ Pontos importantes que devem ser observados:
 * O token é criado através de um POST para o recurso 'tokens';
 * A API do BPay está disponível no seguinte endereço:
    * Produção: 
-   * Homologação: http://bpay-node.cloudapp.net
+   * Homologação: http://azbsbpnd-01.cloudapp.net
 
 Conteúdo da documentação:
 
@@ -250,7 +250,7 @@ Address | [ShippingAddress](https://github.com/b-pay/pre-order/blob/master/READM
 
 ## Redirecionamento para página de checkout do bPay
 
-http://bpay-checkout.azurewebsites.net/get-checkout?id={TOKEN}
+http://azbsbpchk-01.cloudapp.net/get-checkout?id={TOKEN}
 
 ## Post de notificação
 
@@ -271,7 +271,7 @@ Detalhes dos campos enviados no Post de Notificação:
 
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
-| TransactionType | String | Identificador do tipo de transação. Exemplo CreditCardTransaction" | Sim |
+| TransactionType | String | Identificador do tipo de transação. Exemplo "CreditCardTransaction" | Sim |
 | CreditCardTransaction | [CreditCardTransaction](https://github.com/b-pay/pre-order/blob/master/README.md#creditcardtransaction) | Objeto que contém dados da transação | Sim |
 
 #### CreditCardTransaction
@@ -281,7 +281,6 @@ Detalhes dos campos enviados no Post de Notificação:
 | SellerKey | UUID | Identificador da loja que realizou a transação | Sim |
 | Acquirer | String | Adquirente onde a transação foi processada | Sim |
 | TransactionKey | UUID | Identificador da transação no BPay | Sim |
-| TransactionReference | String | Identificador da transação na loja | Não |
 | TransactionIdentifier | String | Identificador da transação na adquirente | Sim |
 | UniqueSequencialNumber | String | Identificador único da transação na adquirente | Sim |
 | AuthorizationCode | String | Código de autorização na adquirente | Sim |
@@ -332,7 +331,6 @@ Detalhes dos campos enviados no Post de Notificação:
             "sellerKey": "1a7848d4-2b7c-42af-9d04-98b792fb89ca",
             "acquirer": "Simulator",
             "transactionKey": "6fdd42b2-6c78-43e2-8a9a-22a507c593b8",
-            "transactionReference": "853fa133-2715-4d25-828d-3c497f5ae5a7",
             "transactionIdentifier": "96311",
             "uniqueSequencialNumber": "121073",
             "authorizationCode": "100038",
@@ -373,7 +371,7 @@ Detalhes dos campos enviados no Post de Notificação:
 
 Para consultar transações do bPay é necessário enviar um GET para o recurso /transactions. Os parâmetros de pesquisa disponíveis são *transactionKey*, identificador da transação no bPay, *orderReference*, identificador do pedido na loja ou *token*, código gerado para exibição do checkout.
 
-Exemplo: http://bpay-checkout.azurewebsites.net/transactions?id={transactionKey, orderReference ou token}
+Exemplo: http://azbsbpsell-01.cloudapp.net/transactions/{transactionKey, orderReference ou token}
 
 #### Observação
 `
@@ -390,7 +388,6 @@ Os objetos *payment* e *order* possuem os mesmos campos descritos na seção do 
             "sellerKey": "1a7848d4-2b7c-42af-9d04-98b792fb89ca",
             "acquirer": "Simulator",
             "transactionKey": "6fdd42b2-6c78-43e2-8a9a-22a507c593b8",
-            "transactionReference": "853fa133-2715-4d25-828d-3c497f5ae5a7",
             "transactionIdentifier": "96311",
             "uniqueSequencialNumber": "121073",
             "authorizationCode": "100038",
