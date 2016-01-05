@@ -371,7 +371,7 @@ Detalhes dos campos enviados no Post de Notificação:
 
 Para consultar transações do B-PAY é necessário enviar um GET para o recurso /transactions. Os parâmetros de pesquisa disponíveis são *transactionKey*, identificador da transação no B-PAY, *orderReference*, identificador do pedido na loja ou *token*, código gerado para exibição do checkout.
 
-Exemplo: https://seller-api.meubpay.com.br/api/transactions/{transactionKey, orderReference ou token}
+Exemplo: https://seller-api.meubpay.com.br/transactions/{transactionKey, orderReference ou token}
 
 #### Observação
 `
@@ -428,7 +428,7 @@ Os objetos *payment* e *order* possuem os mesmos campos descritos na seção do 
 
 Para cancelar transações do B-PAY é necessário enviar um POST para o recurso /transactions. Os parâmetros disponíveis são *transactionKey*, identificador da transação no B-PAY, *orderReference*, identificador do pedido na loja ou *token*, código gerado para exibição do checkout. O valor a ser cancelado é opcional e poderá ser enviado no corpo da requisição.
 
-Exemplo: https://seller-api.meubpay.com.br/api/transactions/{transactionKey, orderReference ou token}/cancel
+Exemplo: https://seller-api.meubpay.com.br/transactions/{transactionKey, orderReference ou token}/cancel
 
 #### Cancel
 | Campo|Tipo|Descrição|Obrigatório |
