@@ -9,7 +9,7 @@ Pontos importantes que devem ser observados:
 * O token é criado através de um POST para o recurso 'tokens';
 * A API do B-PAY está disponível no seguinte endereço:
    * Produção: 
-   * Homologação: http://azbsbpnd-01.cloudapp.net
+   * Homologação: https://checkout-api.meubpay.com.br
 
 Conteúdo da documentação:
 
@@ -250,7 +250,7 @@ Address | [ShippingAddress](https://github.com/b-pay/pre-order/blob/master/READM
 
 ## Redirecionamento para página de checkout do B-PAY
 
-http://azbsbpchk-01.cloudapp.net/get-checkout?id={TOKEN}
+https://checkout.meubpay.com.br/get-checkout?id={TOKEN}
 
 ## Post de notificação
 
@@ -371,7 +371,7 @@ Detalhes dos campos enviados no Post de Notificação:
 
 Para consultar transações do B-PAY é necessário enviar um GET para o recurso /transactions. Os parâmetros de pesquisa disponíveis são *transactionKey*, identificador da transação no B-PAY, *orderReference*, identificador do pedido na loja ou *token*, código gerado para exibição do checkout.
 
-Exemplo: http://azbsbpsell-01.cloudapp.net/transactions/{transactionKey, orderReference ou token}
+Exemplo: https://seller-api.meubpay.com.br/api/transactions/{transactionKey, orderReference ou token}
 
 #### Observação
 `
@@ -428,7 +428,7 @@ Os objetos *payment* e *order* possuem os mesmos campos descritos na seção do 
 
 Para cancelar transações do B-PAY é necessário enviar um POST para o recurso /transactions. Os parâmetros disponíveis são *transactionKey*, identificador da transação no B-PAY, *orderReference*, identificador do pedido na loja ou *token*, código gerado para exibição do checkout. O valor a ser cancelado é opcional e poderá ser enviado no corpo da requisição.
 
-Exemplo: http://azbsbpsell-01.cloudapp.net/transactions/{transactionKey, orderReference ou token}/cancel
+Exemplo: https://seller-api.meubpay.com.br/api/transactions/{transactionKey, orderReference ou token}/cancel
 
 #### Cancel
 | Campo|Tipo|Descrição|Obrigatório |
