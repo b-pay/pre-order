@@ -107,7 +107,7 @@ Address | [ShippingAddress](https://github.com/b-pay/pre-order/blob/master/READM
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
 | Street | String | Nome da rua. Máximo de 64 caracteres | Sim |
-| Number | Integer | Número | Sim |
+| Number | Integer | Número | Não |
 | ZipCode | String | CEP (sem traço) | Sim |
 | Complement | String | Complemento. Máximo de 64 caracteres | Não |
 | District | String | Bairro. Máximo 64 caracteres | Sim |
