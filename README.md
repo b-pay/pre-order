@@ -72,7 +72,7 @@ Para criar um token é necessário enviar um POST para o recurso /tokens.
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
 | Street | String | Nome da rua. Máximo de 64 caracteres | Sim |
-| Number | String | Número | Sim |
+| Number | Integer | Número | Sim |
 | ZipCode | String | CEP (sem traço) | Sim |
 | Complement | String | Complemento. Máximo de 64 caracteres | Não |
 | District | String | Bairro. Máximo de 64 caracteres | Sim |
@@ -107,7 +107,7 @@ Address | [ShippingAddress](https://github.com/b-pay/pre-order/blob/master/READM
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
 | Street | String | Nome da rua. Máximo de 64 caracteres | Sim |
-| Number | String | Número | Sim |
+| Number | Integer | Número | Sim |
 | ZipCode | String | CEP (sem traço) | Sim |
 | Complement | String | Complemento. Máximo de 64 caracteres | Não |
 | District | String | Bairro. Máximo 64 caracteres | Sim |
@@ -126,7 +126,7 @@ Address | [ShippingAddress](https://github.com/b-pay/pre-order/blob/master/READM
 #### Installment
 | Campo|Tipo|Descrição|Obrigatório |
 | --------|---------|-------|-------|
-| Number | String | Número da parcela | Sim |
+| Number | Integer | Número da parcela | Sim |
 | Text | String | Texto da parcela. Por exemplo, "1x de 100,00 sem juros" | Sim |
 | AmountInCents | Integer | Valor do pedido | Não |
 
