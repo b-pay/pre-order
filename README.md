@@ -321,7 +321,7 @@ Detalhes dos campos enviados no Post de Notificação:
 | OrderReference | String | Identificador do pedido enviado pela loja | Sim |
 | OrderStatus | String | Status do pedido | Sim |
 
-#### Json de exemplo do Post de notificação
+#### Json de exemplo do post de notificação
 
 ```json
 {
@@ -363,6 +363,19 @@ Detalhes dos campos enviados no Post de Notificação:
         "orderKey": "674bc75b-84a4-4026-9f2a-ada73920a1a1",
         "orderReference": "Meupedido2",
         "orderStatus": "Paid"
+    }
+}
+```
+
+#### Json de exemplo do post de pagamento expirado
+
+```json
+{
+    "order": {
+        "token": "767ac3e0-84cc-11e5-b9d9-7bfe49f91a01",
+        "orderReference": "Meupedido2",
+        "sellerKey": "1a7848d4-2b7c-42af-9d04-98b792fb89ca",
+        "orderStatus": "Expired"
     }
 }
 ```
