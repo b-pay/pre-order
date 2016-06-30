@@ -8,8 +8,9 @@ Pontos importantes que devem ser observados:
 * Um token tem tempo de expiração padrão de 30 minutos.
 * O token é criado através de um POST para o recurso 'tokens';
 * A API do B-PAY está disponível no seguinte endereço:
-   * Produção: 
-   * Homologação: https://checkout-api.meubpay.com.br
+* 
+   * Produção:  https://checkout-api.meubpay.com.br
+   * Homologação: https://checkout-api-staging.meubpay.com.br
 
 Conteúdo da documentação:
 
